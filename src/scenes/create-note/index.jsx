@@ -35,7 +35,7 @@ export const CreateNote = () => {
                     title,
                     body
                 })
-                navigate.push("/")
+                navigate("/")
             }
         } catch (error) {
             // error messages will go here
@@ -44,7 +44,7 @@ export const CreateNote = () => {
     return (
         <form onSubmit={createNote}>
             <input onChange={(e) => setTitle(e.target.value)} value={title} placeholder="title" />
-            <input onChange={(e) => setBody(e.target.value)} value={body} placeholder="body" />
+            <textarea onChange={(e) => setBody(e.target.value)} value={body} placeholder="body" />
             <input type="submit" value="Submit" />
         </form>
     )
