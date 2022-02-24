@@ -11,10 +11,10 @@ export const CreateNote = () => {
 
     useEffect(() => {
         if(id) {
-            backend.get(`lists/${id}`)
+            backend.get(`/notes/${id}`)
             .then(({ data }) => {
                 setTitle(data.title)
-                setBody(data.description)
+                setBody(data.body)
             })
         }
     },[id],)
@@ -23,7 +23,7 @@ export const CreateNote = () => {
         // prevent default form behaviour
         e.preventDefault()
         try {
-            if(id) {
+            if (id) {
                 await backend.put(`/notes/${id}`, {
                     title,
                     body
@@ -35,7 +35,7 @@ export const CreateNote = () => {
                     title,
                     body
                 })
-                navigate("/")
+                navigate.push("/")
             }
         } catch (error) {
             // error messages will go here

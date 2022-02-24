@@ -15,6 +15,7 @@ import { Header } from './scenes/header'
 // import pages
 import { Notes } from './scenes/notes'
 import { CreateNote } from './scenes/create-note'
+import { NoteDetails } from './scenes/note-details'
 
 function App() {
   return (
@@ -27,6 +28,12 @@ function App() {
           />
           <Route path='/notes/create'
             element={<CreateNote/>}
+          />
+          <Route path='/notes/update/:id'
+            element={<CreateNote/>}
+          />
+          <Route path='/notes/:id'
+            element={<NoteDetails/>}
           />
         </Routes>
       </Router>

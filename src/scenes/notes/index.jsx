@@ -15,12 +15,12 @@ export const Notes = () => {
         <Link to ="/notes/create"><button>New Note</button></Link>
         <div className="flex-container">
         {notes.map(({id, title, body}, index) => (
-            <article key={id}>
-            {/* <Link key={id} to={`/notes/${id}`}> */}
-                <h2>{title}</h2>
-                <p>{body}</p>
-            {/* </Link> */}
-            </article>
+            <Link key={id} to={`/notes/${id}`}>
+                <article key={id}>
+                    <h2>{title}</h2>
+                    <p>{body}</p>
+                </article>
+            </Link>
         )
         )}
         </div>
