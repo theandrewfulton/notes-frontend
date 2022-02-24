@@ -7,7 +7,7 @@ export const CreateNote = () => {
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
 
-    const Navigate = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if(id) {
@@ -29,13 +29,13 @@ export const CreateNote = () => {
                     body
                 })
                 // if success:
-                Navigate.push(`/notes/${id}`)
+                navigate.push(`/notes/${id}`)
             } else {
                 await backend.post("/notes", {
                     title,
                     body
                 })
-                Navigate.push("/lists")
+                navigate("/")
             }
         } catch (error) {
             // error messages will go here
