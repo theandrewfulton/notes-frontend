@@ -10,15 +10,51 @@ body {
   margin: auto;
 
 }
-article {
+.card {
   width: 300px;
   height: 300px;
   border: 5px solid black;
   /* padding: 5px; */
   margin: 10px;
-  white-space: pre-line;
+  /* white-space: pre-line; */
 }
-h2, .loading {
+
+form {
+  width: 80%;
+  height: 80%;
+  border: 5px solid black;
+  /* padding: 5px; */
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+input {
+  font-size: 20px;
+  margin: auto;
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding: 5px;
+  display: block;
+}
+
+textarea {
+  width: 90%;
+  min-height: 300px;
+  height: 70%;
+  height: fit-content;
+}
+
+
+h2, .loading{
   text-align: center;
   background-color: black;
   color: white;

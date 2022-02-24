@@ -55,14 +55,16 @@ export const CreateNote = () => {
             setLoading(false)
         }
     }
+
     return (
         <>
             {loading && <p className="loading">Loading...</p>}
             {error && <p className="error">{errorMessage}</p>}
             <form onSubmit={createNote}>
-                <input onChange={(e) => setTitle(e.target.value)} value={title} placeholder="title" />
+                <input className="title" onChange={(e) => setTitle(e.target.value)} value={title} placeholder="title" />
                 <textarea onChange={(e) => setBody(e.target.value)} value={body} placeholder="body" />
                 <input type="submit" value="Submit" />
+                <button value="Discard"/>
             </form>
         </>
     )
