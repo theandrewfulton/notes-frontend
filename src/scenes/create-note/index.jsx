@@ -6,6 +6,9 @@ export const CreateNote = () => {
     const {id} = useParams()
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
     const navigate = useNavigate()
 
@@ -22,6 +25,10 @@ export const CreateNote = () => {
     const createNote = async (e) => {
         // prevent default form behaviour
         e.preventDefault()
+        // set loading to true
+        setLoading(true)
+        // remove error message
+        setErrorMessage("")
         try {
             if (id) {
                 await backend.put(`/notes/${id}`, {
@@ -29,23 +36,34 @@ export const CreateNote = () => {
                     body
                 })
                 // if success:
+                setLoading(false)
                 navigate(`/notes/${id}`)
             } else {
                 await backend.post("/notes", {
                     title,
                     body
                 })
+                setLoading(false)
                 navigate("/")
             }
         } catch (error) {
-            // error messages will go here
+            // If fail:
+            // display error message
+            setError(true)  
+            setErrorMessage(error.message)
+            // stop loading
+            setLoading(false)
         }
     }
     return (
-        <form onSubmit={createNote}>
-            <input onChange={(e) => setTitle(e.target.value)} value={title} placeholder="title" />
-            <textarea onChange={(e) => setBody(e.target.value)} value={body} placeholder="body" />
-            <input type="submit" value="Submit" />
-        </form>
+        <>
+            {loading && <p className="loading">Loading...</p>}
+            {error && <p className="error">{errorMessage}</p>}
+            <form onSubmit={createNote}>
+                <input onChange={(e) => setTitle(e.target.value)} value={title} placeholder="title" />
+                <textarea onChange={(e) => setBody(e.target.value)} value={body} placeholder="body" />
+                <input type="submit" value="Submit" />
+            </form>
+        </>
     )
 }
