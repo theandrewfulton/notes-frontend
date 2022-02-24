@@ -26,9 +26,10 @@ export const Notes = () => {
         <div className="flex-container">
         {notes.map(({id, title, body}, index) => (
             <Link key={id} to={`/notes/${id}`}>
-                <article key={id}>
+                <article className="card" key={id}>
                     <h2>{title}</h2>
-                    <p>{body}</p>
+                    {/* substring shows characters between 0 and x in the body. This can be used to show more or less characters in the synopsis */}
+                    {body.substring(0, 800)}
                 </article>
             </Link>
         )
