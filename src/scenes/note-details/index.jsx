@@ -6,7 +6,7 @@ import { backend } from '../../data'
 export const NoteDetails = () => {
     const {id} = useParams()
     const [note, setNote] = useState("")
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     // copied from create note - opportunity to make this DRYer in future?
     // title and data not set separately?
@@ -16,6 +16,18 @@ export const NoteDetails = () => {
             .then(({ data }) => setNote(data))
     }, [id])
 
+     // List delete method
+     const deleteNote = async (id, index) => {
+        try {
+          // send request to backend
+          await backend.delete(`/notes/${id}`)
+          navigate("/")
+        } catch (error) {
+        //   error message goes here
+        }
+  
+      }
+
     return (
         <>
          <article>
@@ -23,6 +35,8 @@ export const NoteDetails = () => {
               <p>{note.body}</p>
               {/* edit button */}
               <Link key={id} to={`/notes/update/${id}`}><button>Edit</button></Link>
+              {/* delete button */}
+              <button onClick={() => deleteNote(id)}>DELETE</button>
             </article>
         </>
     )
