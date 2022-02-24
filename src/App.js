@@ -12,14 +12,16 @@ function App() {
     .then(({ data }) => setNotes(data))
   }, [])
   return (
-    notes.map(({id, title, body}, index) => (
+  <div className="flex-container">
+    {notes.map(({id, title, body}, index) => (
       <article key={id}>
-        <p>{title}</p>
-        <p>{body}</p>
+          <h2>{title}</h2>
+          <p>{body}</p>
       </article>
     )
-    )
-  );
+    )}
+  </div>
+  )
 }
 
 export default App;
