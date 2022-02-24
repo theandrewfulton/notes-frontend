@@ -29,7 +29,7 @@ export const CreateNote = () => {
                     body
                 })
                 // if success:
-                navigate.push(`/notes/${id}`)
+                navigate(`/notes/${id}`)
             } else {
                 await backend.post("/notes", {
                     title,
