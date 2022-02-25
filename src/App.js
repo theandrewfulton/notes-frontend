@@ -50,6 +50,7 @@ function App() {
           />
           <Route path='/notes/update/:id'
             element={<CreateNote/>}
+            // element={<NoteDialog}
           />
           <Route path='/notes/:id'
             element={<NoteDetails/>}
