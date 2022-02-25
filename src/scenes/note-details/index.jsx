@@ -2,6 +2,12 @@ import { useEffect, useState } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 
 import { backend } from '../../data'
+import { FormDialog } from '../note-dialog'
+
+// imports for Material-ui
+import Button from '@mui/material/Button'
+import ButtonGroup from '@mui/material/ButtonGroup';
+
 
 export const NoteDetails = () => {
     const {id} = useParams()
@@ -10,6 +16,17 @@ export const NoteDetails = () => {
     const [error, setError] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
     const navigate = useNavigate()
+
+    // open dialog
+    const [
+      // open,
+      setOpen] = useState(false);
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+    const handleClose = () => {
+      setOpen(false);
+    };
 
     // copied from create note - opportunity to make this DRYer in future?
     // title and data not set separately?
@@ -46,10 +63,13 @@ export const NoteDetails = () => {
          <article>
               <p>{note.title}</p>
               <p>{note.body}</p>
-              {/* edit button */}
-              <Link key={id} to={`/notes/update/${id}`}><button>Edit</button></Link>
-              {/* delete button */}
-              <button onClick={() => deleteNote(id)}>DELETE</button>
+              <FormDialog open={handleClickOpen} onClose={handleClose}/>
+              <ButtonGroup variant="outlined" aria-label="outlined button group">
+                {/* edit button */}
+                <Link key={id} to={`/notes/update/${id}`}><Button>Edit</Button></Link>
+                {/* delete button */}
+                <Button color="error" onClick={() => deleteNote(id)}>DELETE</Button>
+              </ButtonGroup>
             </article>
         </>
     )

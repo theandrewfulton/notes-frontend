@@ -22,6 +22,7 @@ import { Header } from './scenes/header'
 import { Notes } from './scenes/notes'
 import { CreateNote } from './scenes/create-note'
 import { NoteDetails } from './scenes/note-details'
+// import { NoteDialog } from './scenes/note-dialog'
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           />
           <Route path='/notes/update/:id'
             element={<CreateNote/>}
+            // element={<NoteDialog}
           />
           <Route path='/notes/:id'
             element={<NoteDetails/>}
