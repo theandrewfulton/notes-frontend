@@ -8,6 +8,11 @@ export const Header = () => {
             >
                 Home
             </NavLink>
+            <NavLink
+                to="/log-in"
+            >
+                Log In
+            </NavLink>
         </header>
     )
 }
