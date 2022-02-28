@@ -16,6 +16,7 @@ import { Header } from './scenes/header'
 import { Notes } from './scenes/notes'
 import { CreateNote } from './scenes/create-note'
 import { NoteDetails } from './scenes/note-details'
+import { LogIn } from "./scenes/auth/log-in"
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         <Routes>
           <Route path="/"
             element={<Notes/>}
+          />
+          <Route path="/log-in"
+              element={<LogIn/>}
           />
           <Route path='/notes/create'
             element={<CreateNote/>}
