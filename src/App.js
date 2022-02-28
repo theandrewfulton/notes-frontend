@@ -17,6 +17,7 @@ import { Notes } from './scenes/notes'
 import { CreateNote } from './scenes/create-note'
 import { NoteDetails } from './scenes/note-details'
 import { LogIn } from "./scenes/auth/log-in"
+import { LogOut } from "./scenes/auth/log-out"
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
           />
           <Route path="/log-in"
               element={<LogIn/>}
+          />
+          <Route path="/log-out"
+              element={<LogOut/>}
           />
           <Route path='/notes/create'
             element={<CreateNote/>}
