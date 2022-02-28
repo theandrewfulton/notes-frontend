@@ -18,6 +18,11 @@ export const Header = () => {
             >
                 Log Out
             </NavLink>
+            <NavLink
+                to="/sign-up"
+            >
+                Sign Up
+            </NavLink>
         </header>
     )
 }
