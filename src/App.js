@@ -19,6 +19,7 @@ import { NoteDetails } from './scenes/note-details'
 import { LogIn } from './scenes/auth/log-in'
 import { LogOut } from './scenes/auth/log-out'
 import { SignUp } from './scenes/auth/sign-up'
+// import { UserDetails } from './scenes/user/view'
 
 function App() {
   return (
@@ -47,6 +48,9 @@ function App() {
           <Route path='/notes/:id'
             element={<NoteDetails/>}
           />
+          {/* <Route path='/users/:id'
+            element={<UserDetails/>}
+          /> */}
         </Routes>
       </Router>
     </>
