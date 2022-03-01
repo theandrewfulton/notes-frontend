@@ -8,6 +8,21 @@ export const Header = () => {
             >
                 Home
             </NavLink>
+            <NavLink
+                to="/log-in"
+            >
+                Log In
+            </NavLink>
+            <NavLink
+                to="/log-out"
+            >
+                Log Out
+            </NavLink>
+            <NavLink
+                to="/sign-up"
+            >
+                Sign Up
+            </NavLink>
         </header>
     )
 }
