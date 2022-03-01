@@ -11,6 +11,6 @@ export const LogOut = () => {
     // redirect to home page
     useEffect(() => {
         navigate("/")
-    },[])
+    })
     return (null)
 }
