@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom"
 import { backend } from '../../../data'
 
 // imports for Material-ui
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 
 export const LogIn = () => {
@@ -43,15 +46,39 @@ export const LogIn = () => {
         <Container>
             {/* Login form */}
             <form onSubmit={logIn}>
-                <input onChange={(e) => setEmail(e.target.value)} value={email}
-                id="email" placeholder="email" />
-                <input type="password" onChange={(e) => setPassword(e.target.value)}
-                value={password} id="password" placeholder="password" />
-                <input type="submit" value="Submit" />
+                <TextField
+                    id="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    label="email"
+                    variant="outlined"
+                    fullWidth
+                    required
+                />
+                <TextField
+                    id="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    label="password"
+                    variant="outlined"
+                    type="password"
+                    fullWidth
+                    required
+                />
+                <Button
+                    type="submit"
+                    value="submit"
+                    variant="outlined"
+                    >
+                        Log In
+                </Button>
             </form>
 
             {/* Link to Sign Up */}
-            <Link to="/sign-up">or create an account</Link>
+            <Typography>
+                Don't have an account yet?
+            </Typography>
+            <Link to={`/sign-up`}><Button variant="outlined">Sign Up</Button></Link>
         </Container>
     )
     }

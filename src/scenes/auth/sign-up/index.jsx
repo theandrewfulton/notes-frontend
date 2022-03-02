@@ -90,7 +90,7 @@ return (
     <Typography>
         Already have an account?
     </Typography>
-    <Link to={`/log-in`}><Button variant="outlined">Log In instead</Button></Link>
+    <Link to={`/log-in`}><Button variant="outlined">Log In</Button></Link>
     </Container>
 )
 }
