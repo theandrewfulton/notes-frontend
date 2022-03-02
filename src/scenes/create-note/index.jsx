@@ -82,6 +82,7 @@ export const CreateNote = () => {
                     placeholder="Body"
                     multiline
                     fullWidth
+                    minRows={10}
                 />
                 {/* conditional show create if new, show update if edit */}
                 <Button
