@@ -2,7 +2,8 @@ import { useState } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 
-
+// imports for Material-ui
+import Container from '@mui/material/Container'
 
 // grab backend to use based on environment and grab error helper
 import { backend } from '../../../data'
@@ -41,7 +42,7 @@ export const SignUp = () => {
     }
 
 return (
-    <>
+    <Container>
     {/* Sign up form */}
     <form onSubmit={signUp}>
         <input onChange={(e) => setEmail(e.target.value)} value={email}
@@ -55,6 +56,6 @@ return (
 
     {/* Link to Log in */}
     <Link to="/log-in">or log into an existing account</Link>
-    </>
+    </Container>
 )
 }

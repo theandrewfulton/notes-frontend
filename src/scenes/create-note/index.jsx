@@ -5,6 +5,7 @@ import { backend } from "../../data"
 // imports for Material-ui
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
+import Container from '@mui/material/Container'
 
 
 export const CreateNote = () => {
@@ -65,35 +66,37 @@ export const CreateNote = () => {
         <>
             {loading && <p className="loading">Loading...</p>}
             {error && <p className="error">{errorMessage}</p>}
-            <form onSubmit={createNote}>
-                <TextField
-                    id="title"
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
-                    label="Title"
+            <Container>
+                <form onSubmit={createNote}>
+                    <TextField
+                        id="title"
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                        label="Title"
+                        variant="outlined"
+                        fullWidth
+                    />
+                    <TextField
+                        id="body"
+                        onChange={(e) => setBody(e.target.value)}
+                        value={body}
+                        label="Body"
+                        placeholder="Body"
+                        multiline
+                        fullWidth
+                        minRows={10}
+                    />
+                    {/* conditional show create if new, show update if edit */}
+                    <Button
+                    type="submit"
+                    value="submit"
                     variant="outlined"
-                    fullWidth
-                />
-                <TextField
-                    id="body"
-                    onChange={(e) => setBody(e.target.value)}
-                    value={body}
-                    label="Body"
-                    placeholder="Body"
-                    multiline
-                    fullWidth
-                    minRows={10}
-                />
-                {/* conditional show create if new, show update if edit */}
-                <Button
-                type="submit"
-                value="submit"
-                variant="outlined"
-                >
-                    Save
-                </Button>
-                {/* <button value="Discard"/> */}
-            </form>
+                    >
+                        Save
+                    </Button>
+                    {/* <button value="Discard"/> */}
+                </form>
+            </Container>
         </>
     )
 }

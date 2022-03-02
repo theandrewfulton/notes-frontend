@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom"
 // grab backend
 import { backend } from '../../../data'
 
+// imports for Material-ui
+import Container from '@mui/material/Container'
+
 export const LogIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -37,18 +40,18 @@ export const LogIn = () => {
     }
 
     return (
-        <>
-        {/* Login form */}
-        <form onSubmit={logIn}>
-            <input onChange={(e) => setEmail(e.target.value)} value={email}
-            id="email" placeholder="email" />
-            <input type="password" onChange={(e) => setPassword(e.target.value)}
-            value={password} id="password" placeholder="password" />
-            <input type="submit" value="Submit" />
-        </form>
-    
-        {/* Link to Sign Up */}
-        <Link to="/sign-up">or create an account</Link>
-        </>
+        <Container>
+            {/* Login form */}
+            <form onSubmit={logIn}>
+                <input onChange={(e) => setEmail(e.target.value)} value={email}
+                id="email" placeholder="email" />
+                <input type="password" onChange={(e) => setPassword(e.target.value)}
+                value={password} id="password" placeholder="password" />
+                <input type="submit" value="Submit" />
+            </form>
+
+            {/* Link to Sign Up */}
+            <Link to="/sign-up">or create an account</Link>
+        </Container>
     )
     }
