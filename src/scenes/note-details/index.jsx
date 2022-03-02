@@ -2,17 +2,14 @@ import { useEffect, useState } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 
 import { backend } from '../../data'
-// import { FormDialog } from '../note-dialog'
 
 // imports for Material-ui
-// import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
-import ButtonGroup from '@mui/material/ButtonGroup';
+import ButtonGroup from '@mui/material/ButtonGroup'
 import Typography from '@mui/material/Typography'
-import CssBaseline from '@mui/material/CssBaseline'
 import Container from '@mui/material/Container'
 
 
@@ -23,17 +20,6 @@ export const NoteDetails = () => {
     const [error, setError] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
     const navigate = useNavigate()
-
-    // open dialog
-    const [
-      // open,
-      setOpen] = useState(false);
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-    const handleClose = () => {
-      setOpen(false);
-    };
 
     // copied from create note - opportunity to make this DRYer in future?
     // title and data not set separately?
