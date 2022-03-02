@@ -1,67 +1,83 @@
-// import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import Menu from '@mui/material/Menu'
+import MenuIcon from '@mui/icons-material/Menu'
+import Container from '@mui/material/Container'
+// import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+// import Tooltip from '@mui/material/Tooltip'
+import MenuItem from '@mui/material/MenuItem'
 
-// export const Header = () => {
-//     return (
-//         <header>
-//             <NavLink
-//                 to="/"
-//             >
-//                 Home
-//             </NavLink>
-//             <NavLink
-//                 to="/log-in"
-//             >
-//                 Log In
-//             </NavLink>
-//             <NavLink
-//                 to="/log-out"
-//             >
-//                 Log Out
-//             </NavLink>
-//             <NavLink
-//                 to="/sign-up"
-//             >
-//                 Sign Up
-//             </NavLink>
-//         </header>
-//     )
-// }
 
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+// Import NavLink according to material-ui instructions
+import { Link as NavLink, } from 'react-router-dom'
+import Link from '@mui/material/Link'
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+// The name of the app - reduces repeated code
+const appName = "Notes App"
+
+// helper function to add custom properties to link and reduce repeated code
+const HeaderLink = props => {
+    const location = props.location
+    const linkText = props.linkText
+    return (
+        <Link color="inherit" underline="hover" component={NavLink}
+        to={location}
+    >
+        {linkText}
+    </Link>
+    )
+}
+
+const pages = [
+    <HeaderLink location="/" linkText="Home"/>,
+]
+// need to run this on update with hooks
+// if there is no jwt in localStorage, add signup and log in links to pages array
+// to be rendered on teh app bar
+const userLogic = () => {
+    if (localStorage.jwt === undefined) {
+        pages.push(
+            <HeaderLink location="/sign-up" linkText="Sign Up"/>,
+            <HeaderLink location="/log-in" linkText="Log In"/>
+        )
+        // If there is a jwt, show the log out link
+    } else {
+        pages.push(
+            <HeaderLink location="/log-out" linkText="Log Out"/>
+        )
+    }
+}
+
+userLogic()
+
+// have normal array of pages. Call on the array and if x then add this to array
+// else add something else to the array - array.push?
+
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
 export const Header = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+//   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+//   const handleOpenUserMenu = (event) => {
+//     setAnchorElUser(event.currentTarget);
+//   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+//   const handleCloseUserMenu = () => {
+//     setAnchorElUser(null);
+//   };
 
   return (
     <AppBar position="static">
@@ -73,7 +89,7 @@ export const Header = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            LOGO
+            {appName}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -118,7 +134,7 @@ export const Header = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            LOGO
+            {appName}
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -132,7 +148,7 @@ export const Header = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -160,7 +176,7 @@ export const Header = () => {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
