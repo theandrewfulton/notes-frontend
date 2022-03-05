@@ -1,10 +1,10 @@
 # Notes App
 ## Andrew Fulton
-Deployed Site: 
+Deployed Site: https://upbeat-agnesi-735b00.netlify.app/
 
-Frontend Repository:
+Frontend Repository: https://github.com/theandrewfulton/notes-frontend
 
-Backend Repository: 
+Backend Repository: https://github.com/theandrewfulton/notes-rails-backend
 
 ## Description
 
@@ -25,6 +25,8 @@ Hosting
 Testing
 
 ## Installation
+
+You are welcome do [visit the deployed site](https://upbeat-agnesi-735b00.netlify.app/) and explore the features and functionality there. The following installation instructions are for downloading the source code if you want to run the notes app locally in a development environment.
 
 Please note the following notes were tested on Linux and should also work for macOS. They may also work for Windows Subsytem on Linx (WSL). If you are running Windows you can [find out more about WSL here](https://docs.microsoft.com/en-us/windows/wsl/).
 
