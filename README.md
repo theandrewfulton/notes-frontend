@@ -10,17 +10,67 @@ Backend Repository: https://github.com/theandrewfulton/notes-rails-backend
 
 ### Purpose
 
+The Notes App creates a place where users can save things they want to keep a record of. This can be anything from shopping lists, notes for school or a business plan for their next big idea! I created the Notes App to continue building my skills with React as well as to explore Material-UI. This app will also serve as a jumping off point for me to learn the full MERN stack (the backend is currently Ruby on Rails), React Native and Electron.
+
 ### Target Audience
+
+The target audience for this application is users who want a simple way to keep track of their notes all in one place. It will also showcase my skills to family, friends and potential recruiters.
 
 ### Functionality and Features
 
+#### Create an Account
+
+From the main page users can create an account by entering a valid email address, a password and confirming their password. Successfully creating an account generates a JSON Web Token (JWT) which is saved in the browser's local storage and used to authenticate the user. Users who create an account are automatically logged in.
+
+#### Log In
+
+Successfully entering the username and password of an existing account generates a JWT which is used for backend authentication. Users can then see notes they have already created.
+
+#### Log Out
+
+Clicking Log Out deletes the JWT from the browser's local storage and the user is no longer able to access their account data unless they log in again.
+
+#### Create a Note
+
+Once logged in users can create a note. The title is optional but notes must have a body to successfully saved. A note is not visible to anyone other than the user who created it.
+
+#### View a note / view a summary of notes
+
+Users can view summaries of all of their notes on a single screen.
+
+#### Update a Note
+
+Users can view the full contents of a note by clicking on it. They can also make any changes they desire to the note provided there is something in the note body on save.
+
+#### Delete a Note
+
+Clicking delete sends a destroy command to the backend database, permanently deleting the current note.
+
 ### Tech Stack
 
-Front End
+#### Front End
 
-Back End
+React
 
-Hosting
+Material-UI
+
+any plugins
+
+testing
+
+Hosted on Netlify
+
+#### Back End
+
+Rails in API mode
+
+PostgreSQL
+
+Gems
+
+testing
+
+Hosted on Heroku
 
 Testing
 
@@ -93,14 +143,6 @@ install instructions from repo the same as above
 
 ## Application Architecture Diagram
 
-## Differences
-
 ## User Stories
 
-## Project Management
-
-## Wireframes
-
 ## Screenshots
-
-## Differences between Wireframes and Screenshots
