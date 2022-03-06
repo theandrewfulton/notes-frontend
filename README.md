@@ -48,31 +48,34 @@ Clicking delete sends a destroy command to the backend database, permanently del
 
 ### Tech Stack
 
-#### Front End
+#### Frontend
 
-React
+- React
 
-Material-UI
+- Material-UI - for styling
 
-any plugins
+- Axios - for asynchronous access to the backend
 
-testing
-
-Hosted on Netlify
-
-#### Back End
-
-Rails in API mode
-
-PostgreSQL
-
-Gems
+- Router - to add pages and navigation to the React app
 
 testing
 
-Hosted on Heroku
+- Hosted on Netlify
 
-Testing
+#### Backend
+
+- Ruby on Rails in API mode
+
+- PostgreSQL
+
+- bcrypt - for password hashing and salting (has_secure_password)
+
+- rack-cors - for Cross-Origin Resource Sharing
+- jwt - for administering JSON Web Tokens for user authentication
+
+testing
+
+- Hosted on Heroku
 
 ## Installation
 
@@ -145,7 +148,7 @@ install instructions from repo the same as above
 
 ## User Stories
 
-As a **Visitor** I want to **sign up as easily as possible** so that **I can begin using the app right away**.
+As a **Visitor** I want to **create an account as easily as possible** so that **I can begin using the app right away**.
 
 As a **User** I want to **log in** so that **I can view the notes I have created**.
 
