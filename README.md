@@ -145,4 +145,22 @@ install instructions from repo the same as above
 
 ## User Stories
 
+As a **Visitor** I want to **sign up as easily as possible** so that **I can begin using the app right away**.
+
+As a **User** I want to **log in** so that **I can view the notes I have created**.
+
+As a **User** I want to **log out** so that **I can keep my account secure when not using the app or on shared devices**.
+
+As an **Administrator** I want **logins on a device to expire after 7 days** so that **I can better balance user convenience with security**.
+
+As a **User** I want to **add a note** so that **I can keep a record of things in my life**.
+
+As a **User** I want **the option of adding a title to my note** so that **I can make my notes easier to find or focus on adding information as quickly as possible depending on the circumstances**.
+
+As a **User** I want to **view all of the notes I have created** so that **I can see what I had added to both remind me and avoid duplicates**.
+
+As a **User** I want to **edit a note** so that **I can make corrections, add or remove text as desired**.
+
+As a **User** I want to **delete a note** so that **I can keep my list of notes relevant and manageable**.
+
 ## Screenshots
