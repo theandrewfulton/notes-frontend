@@ -152,7 +152,7 @@ As a **User** I want to **add a note** so that **I can keep a record of things i
 
 As a **User** I want **the option of adding a title to my note** so that **I can make my notes easier to find or focus on adding information as quickly as possible depending on the circumstances**.
 
-As a **User** I want to **view all of the notes I have created** so that **I can see what I had added to both remind me and avoid duplicates**.gi
+As a **User** I want to **view all of the notes I have created** so that **I can see what I had added to both remind me and avoid duplicates**.
 
 As a **User** I want to **edit a note** so that **I can make corrections, add or remove text as desired**.
 
