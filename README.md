@@ -57,9 +57,6 @@ Clicking delete sends a destroy command to the backend database, permanently del
 - Axios - for asynchronous access to the backend
 
 - Router - to add pages and navigation to the React app
-
-testing
-
 - Hosted on Netlify
 
 #### Backend
@@ -72,9 +69,6 @@ testing
 
 - rack-cors - for Cross-Origin Resource Sharing
 - jwt - for administering JSON Web Tokens for user authentication
-
-testing
-
 - Hosted on Heroku
 
 ## Installation
