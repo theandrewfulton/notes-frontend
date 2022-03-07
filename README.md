@@ -134,6 +134,8 @@ Run the following commands:
 
 ## Application Architecture Diagram
 
+![application-architecture-diagram](docs/application-architecture-diagram.png)
+
 ## User Stories
 
 As a **Visitor** I want to **create an account as easily as possible** so that **I can begin using the app right away**.
