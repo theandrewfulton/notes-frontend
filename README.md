@@ -91,18 +91,14 @@ Download ZIP or select the appropriate terminal option (HTTPS, SSH or Github CLI
 
 If you chose to download the Zip, extract it to your directory of choice once it has downloaded. Open notes-frontend.
 
-If using command line, navigate to your directory of choice (either by using the ```cd``` command, followed by the directory path) or by opening your file manager, navigating to the directory and then right-clicking and choosing *Open in Terminal*. Please note not all file managers support this.
-clone the directory using ```git clone [add url from github here]```
-
-e.g. ``` git clone git@github.com:theandrewfulton/notes-frontend.git```
+If using command line, navigate to your directory of choice (either by using the ```cd``` command, followed by the directory path) or by opening your file manager, navigating to the directory and then right-clicking and choosing *Open in Terminal*. Please note not all file managers support this and you may need to navigate to the directory using the full path instead.
+clone the directory using ``` git clone git@github.com:theandrewfulton/notes-frontend.git```
 
 Once this is complete, navigate into the directory with ```cd notes-frontend```
 
 ### Install packages
 
-run ``` yarn install``` to install the required packages.
-
-[add npm command]
+run ``` yarn install``` to install the required packages (or use ```npm install```)
 
 Once this is complete, run ```yarn start``` to launch the frontend.
 
@@ -116,21 +112,21 @@ Git (already installed from the frontend)
 
 Rails - once ruby is installed run ```gem install rails``` - version 7 is used here
 
-[PostgreSQL](https://www.postgresql.org/) - you may also need to install libpq-dev. [DigitalOcean has a great PostgreSQL tutorial for Linux](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-ruby-on-rails-application-on-ubuntu-18-04)
+[PostgreSQL](https://www.postgresql.org/) - you may also need to install libpq-dev. [DigitalOcean has a great PostgreSQL with Ruby on Rails tutorial for Linux](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-ruby-on-rails-application-on-ubuntu-18-04) and will also walk you through creating a database user.
 
-Need to create a user for postgresql
+[Download or clone the repository](https://github.com/theandrewfulton/notes-rails-backend) using the instructions from the frontend section and open the directory with the terminal emulator of choice.
 
-install instructions from repo the same as above
+Run the following commands:
 
-```bundle install```
+```bundle install``` installs the required dependencies.
 
-```rails db:create```
+```rails db:create``` creates a development database.
 
-```rails db:migrate```
+```rails db:migrate``` adds the required structure and relationships to the database
 
-```rails db:seed```
+```rails db:seed``` populates the database with test data.
 
-```rails s -p 4000```
+```rails s -p 4000``` launches the Rails server on port 4000. The frontend expects the backend on port 4000 in the development environment.
 
 ## Control Flow Diagram
 
