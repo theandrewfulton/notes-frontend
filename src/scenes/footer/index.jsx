@@ -11,7 +11,7 @@ export const Footer = () => {
             <AppBar position="fixed" color="default" sx={{ top: 'auto', bottom: 0, minHeight: 0}}>
                 {/* <Toolbar> */}
                     <Box margin="auto">
-                       <Link href="https://andrew-fulton.com" target="_blank" rel="noopener noreferrer">
+                       <Link href="https://andrew-fulton.com" target="_blank" rel="noopener noreferrer" underline="hover" color="inherit">
                         Andrew Fulton {new Date().getFullYear()}
                         </Link>
                     </Box>
