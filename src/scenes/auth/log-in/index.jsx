@@ -6,6 +6,12 @@ import { useNavigate } from "react-router-dom"
 // grab backend
 import { backend } from '../../../data'
 
+// imports for Material-ui
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+
 export const LogIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -37,18 +43,42 @@ export const LogIn = () => {
     }
 
     return (
-        <>
-        {/* Login form */}
-        <form onSubmit={logIn}>
-            <input onChange={(e) => setEmail(e.target.value)} value={email}
-            id="email" placeholder="email" />
-            <input type="password" onChange={(e) => setPassword(e.target.value)}
-            value={password} id="password" placeholder="password" />
-            <input type="submit" value="Submit" />
-        </form>
-    
-        {/* Link to Sign Up */}
-        <Link to="/sign-up">or create an account</Link>
-        </>
+        <Container>
+            {/* Login form */}
+            <form onSubmit={logIn}>
+                <TextField
+                    id="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    label="email"
+                    variant="outlined"
+                    fullWidth
+                    required
+                />
+                <TextField
+                    id="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    label="password"
+                    variant="outlined"
+                    type="password"
+                    fullWidth
+                    required
+                />
+                <Button
+                    type="submit"
+                    value="submit"
+                    variant="outlined"
+                    >
+                        Log In
+                </Button>
+            </form>
+
+            {/* Link to Sign Up */}
+            <Typography>
+                Don't have an account yet?
+            </Typography>
+            <Link to={`/sign-up`}><Button variant="outlined">Sign Up</Button></Link>
+        </Container>
     )
     }

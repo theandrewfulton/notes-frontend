@@ -1,24 +1,8 @@
 body {
   margin: 0;
 }
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 90%;
-  margin: auto;
 
-}
-article {
-  width: 300px;
-  height: 300px;
-  border: 5px solid black;
-  /* padding: 5px; */
-  margin: 10px;
-  white-space: pre-line;
-}
-h2, .loading {
+h2, .loading{
   text-align: center;
   background-color: black;
   color: white;
@@ -32,10 +16,8 @@ h2, .loading {
   margin: 0;
   padding: 5px;
 }
-p {
-  margin: 5px;
-}
-a {
-  text-decoration: none;
-  color: black;
-}
+
+/* a { */
+  /* text-decoration: none; */
+  /* color: white; */
+/* } */

@@ -2,7 +2,11 @@ import { useState } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 
-
+// imports for Material-ui
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
 
 // grab backend to use based on environment and grab error helper
 import { backend } from '../../../data'
@@ -30,7 +34,7 @@ export const SignUp = () => {
 
             // if success:
             // save JWT to local storage
-            localStorage.setItem('jwt', data.jwt)
+            localStorage.setItem('jwt', data.token)
             // redirect to home page
             navigate("/")
         } catch (error) {
@@ -41,20 +45,52 @@ export const SignUp = () => {
     }
 
 return (
-    <>
+    <Container>
     {/* Sign up form */}
     <form onSubmit={signUp}>
-        <input onChange={(e) => setEmail(e.target.value)} value={email}
-        id="email" placeholder="email" />
-        <input type="password" onChange={(e) => setPassword(e.target.value)}
-        value={password} id="password" placeholder="password" />
-        <input type="password" onChange={(e) => setPasswordConfirmation(e.target.value)}
-        value={passwordConfirmation} id="passwordConfirmation" placeholder="confirm password" />
-        <input type="submit" value="Submit" />
+        <TextField
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            label="email"
+            variant="outlined"
+            fullWidth
+            required
+        />
+        <TextField
+            id="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            label="password"
+            variant="outlined"
+            type="password"
+            fullWidth
+            required
+        />
+        <TextField
+            id="passwordConfirmation"
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            value={passwordConfirmation}
+            label="confirm password"
+            variant="outlined"
+            type="password"
+            fullWidth
+            required
+        />
+        <Button
+            type="submit"
+            value="submit"
+            variant="outlined"
+            >
+                Sign Up
+        </Button>
     </form>
 
     {/* Link to Log in */}
-    <Link to="/log-in">or log into an existing account</Link>
-    </>
+    <Typography>
+        Already have an account?
+    </Typography>
+    <Link to={`/log-in`}><Button variant="outlined">Log In</Button></Link>
+    </Container>
 )
 }

@@ -2,6 +2,12 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { backend } from "../../data"
 
+// imports for Material-ui
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Container from '@mui/material/Container'
+
+
 export const CreateNote = () => {
     const {id} = useParams()
     const [title, setTitle] = useState("")
@@ -55,15 +61,42 @@ export const CreateNote = () => {
             setLoading(false)
         }
     }
+
     return (
         <>
             {loading && <p className="loading">Loading...</p>}
             {error && <p className="error">{errorMessage}</p>}
-            <form onSubmit={createNote}>
-                <input onChange={(e) => setTitle(e.target.value)} value={title} placeholder="title" />
-                <textarea onChange={(e) => setBody(e.target.value)} value={body} placeholder="body" />
-                <input type="submit" value="Submit" />
-            </form>
+            <Container>
+                <form onSubmit={createNote}>
+                    <TextField
+                        id="title"
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                        label="Title"
+                        variant="outlined"
+                        fullWidth
+                    />
+                    <TextField
+                        id="body"
+                        onChange={(e) => setBody(e.target.value)}
+                        value={body}
+                        label="Body"
+                        placeholder="Body"
+                        multiline
+                        fullWidth
+                        minRows={10}
+                    />
+                    {/* conditional show create if new, show update if edit */}
+                    <Button
+                    type="submit"
+                    value="submit"
+                    variant="outlined"
+                    >
+                        Save
+                    </Button>
+                    {/* <button value="Discard"/> */}
+                </form>
+            </Container>
         </>
     )
 }
