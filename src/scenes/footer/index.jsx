@@ -7,12 +7,12 @@ import Toolbar from '@mui/material/Toolbar'
 export const Footer = () => {
     return (
         <footer>
-            <AppBar position="fixed" color="default" sx={{ top: 'auto', bottom: 0}}>
-                <Toolbar>
+            <AppBar position="fixed" color="default" sx={{ top: 'auto', bottom: 0, minHeight: 0}}>
+                {/* <Toolbar> */}
                     <Box margin="auto">
                         Andrew Fulton {new Date().getFullYear()}
                     </Box>
-                </Toolbar>
+                {/* </Toolbar> */}
             </AppBar>
         </footer>
     )
