@@ -23,7 +23,6 @@ import { Footer } from './scenes/footer'
 // import pages
 import { Notes } from './scenes/notes'
 import { CreateNote } from './scenes/create-note'
-import { NoteDetails } from './scenes/note-details'
 import { LogIn } from './scenes/auth/log-in'
 import { LogOut } from './scenes/auth/log-out'
 import { SignUp } from './scenes/auth/sign-up'
@@ -53,9 +52,6 @@ function App() {
           <Route path='/notes/update/:id'
             element={<CreateNote/>}
             // element={<NoteDialog}
-          />
-          <Route path='/notes/:id'
-            element={<NoteDetails/>}
           />
           {/* <Route path='/users/:id'
             element={<UserDetails/>}
