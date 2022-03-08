@@ -1,6 +1,4 @@
-import {
-    //  useEffect,
-     useState } from 'react'
+import { useState } from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -9,9 +7,7 @@ import Typography from '@mui/material/Typography'
 import Menu from '@mui/material/Menu'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
-// import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-// import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 
 
@@ -37,54 +33,28 @@ const HeaderLink = props => {
 
 const pages = [
     <HeaderLink location="/" linkText="Home"/>,
+    <HeaderLink location="/sign-up" linkText="Sign Up"/>,
+    <HeaderLink location="/log-in" linkText="Log In"/>,
+    <HeaderLink location="/log-out" linkText="Log Out"/>
 ]
-// need to run this on update with hooks
-// if there is no jwt in localStorage, add signup and log in links to pages array
-// to be rendered on teh app bar
-const userLogic = () => {
-    if (localStorage.jwt === undefined) {
-        pages.push(
-            <HeaderLink location="/sign-up" linkText="Sign Up"/>,
-            <HeaderLink location="/log-in" linkText="Log In"/>
-        )
-        // If there is a jwt, show the log out link
-    } else {
-        pages.push(
-            <HeaderLink location="/log-out" linkText="Log Out"/>
-        )
-    }
-}
-
-userLogic()
-
-// have normal array of pages. Call on the array and if x then add this to array
-// else add something else to the array - array.push?
-
-// const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
 export const Header = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-//   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null)
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-//   const handleOpenUserMenu = (event) => {
-//     setAnchorElUser(event.currentTarget);
-//   };
+    setAnchorElNav(event.currentTarget)
+  }
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+    setAnchorElNav(null)
+  }
 
-//   const handleCloseUserMenu = () => {
-//     setAnchorElUser(null);
-//   };
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* Small screen Menu */}
           <Typography
             variant="h6"
             noWrap
@@ -130,6 +100,7 @@ export const Header = () => {
               ))}
             </Menu>
           </Box>
+          {/* large screen menu */}
           <Typography
             variant="h6"
             noWrap
@@ -140,7 +111,7 @@ export const Header = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
+               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -148,37 +119,8 @@ export const Header = () => {
                 {page}
               </Button>
             ))}
-          </Box>
 
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
