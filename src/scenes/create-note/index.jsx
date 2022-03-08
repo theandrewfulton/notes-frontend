@@ -63,6 +63,21 @@ export const CreateNote = () => {
         }
     }
 
+    // List delete method
+    const deleteNote = async (id, index) => {
+        // set loading to true 
+        setLoading(true)
+        try {
+          // send request to backend
+          await backend.delete(`/notes/${id}`)
+          navigate("/")
+        } catch (error) {
+            setError(true)  
+            setErrorMessage(error.message)
+        }
+  
+      }
+
     const EditButtons = () => {
         if (id) {
             return (
@@ -75,6 +90,7 @@ export const CreateNote = () => {
                         Save
                     </Button>
                     <Link to={`/`}><Button>Back</Button></Link>
+                    <Button color="error" onClick={() => deleteNote(id)}>DELETE</Button>
                 </ButtonGroup>
             )
         } else {
