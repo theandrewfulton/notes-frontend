@@ -15,6 +15,8 @@ import {
 
 // import header
 import { Header } from './scenes/header'
+// import footer
+import { Footer } from './scenes/footer'
 
 
 
@@ -59,6 +61,7 @@ function App() {
             element={<UserDetails/>}
           /> */}
         </Routes>
+        <Footer />
       </Router>
     </>
   )
