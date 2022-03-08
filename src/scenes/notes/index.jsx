@@ -75,7 +75,7 @@ import Container from '@mui/material/Container'
         }}
         >
                     {notes.map(({id, title, body, created_at}, index) => (
-                        <Link key={id} to={`/notes/${id}`}>
+                        <Link key={id} to={`/notes/update/${id}`}>
                             <Card key={id} sx={{
                                 width: 300,
                                 margin: 1,
