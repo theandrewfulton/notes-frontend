@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
-import { Link,
+import { 
+        Link,
         // useParams,
         // useNavigate
     } from "react-router-dom"
@@ -10,7 +11,7 @@ import { backend } from '../../data'
 
 
 // imports for Material-ui
-// import Box from '@mui/material/Box'
+import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 // import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
@@ -40,7 +41,6 @@ import Container from '@mui/material/Container'
     const dateHelper = (date) => {
         const d = new Date(date.created_at)
         return (
-            // console.log(d)
             d.toLocaleString()
         )
     }
@@ -59,45 +59,59 @@ import Container from '@mui/material/Container'
         <>
             {loading && <p className="loading">Loading...</p>}
             {error && <p className="error">{errorMessage}</p>}
-            <Link to ="/notes/create"><Button variant="outlined">New Note</Button></Link>
-        <Container 
-        maxWidth="100"
-        sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            mb: 5,
-            // not working - think it's got something to do with the link
-            // alignItems: 'stretch',
-            // alignContent: 'stretch',
-        }}
-        >
-                    {notes.map(({id, title, body, created_at}, index) => (
-                        <Link key={id} to={`/notes/update/${id}`}>
-                            <Card key={id} sx={{
-                                width: 300,
-                                margin: 1,
-                                // bgcolor: 'background.paper',
-                                }}>
-                                <CardContent>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                        {dateHelper({created_at})}
-                                    </Typography>
-                                    <Typography variant="h5" component="div">
-                                        {title}
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        {/* substring shows characters between 0 and x in the body. This can be used to show more or less characters in the synopsis */}
-                                        {body.substring(0, 200)}
-                                    </Typography>
-                                    {/* <FormDialog component={Link} open={handleClickOpen} onClose={handleClose} key={id} to={`/notes/${id}`} */}
-                                    {/* /> */}
-                                </CardContent>
-                            </Card>
-                         </Link>
-                    )
-                    )}
-        </Container>
+            <Box
+                display="flex"
+                justifyContent="center"
+            >
+                <Button
+                    component={Link}
+                    to='/notes/create'
+                    variant="outlined"
+                    sx={{
+                        margin: 1
+                    }}
+                >
+                    New Note
+                </Button>
+            </Box>
+            <Container 
+            maxWidth="100"
+            sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                mb: 5,
+            }}
+            >
+                {notes.map(({id, title, body, created_at}, index) => (
+                    <Card
+                        component={Link}
+                        to={`/notes/update/${id}`}
+                        key={id}
+                        sx={{
+                            width: 300,
+                            height: 300,
+                            margin: 1,
+                        }}
+                    >
+                        <CardContent>
+                            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                {dateHelper({created_at})}
+                            </Typography>
+                            <Typography variant="h5" component="div">
+                                {title}
+                            </Typography>
+                            <Typography variant="body2">
+                                {/* substring shows characters between 0 and x in the body. This can be used to show more or less characters in the synopsis */}
+                                {body.substring(0, 400)}
+                            </Typography>
+                            {/* <FormDialog component={Link} open={handleClickOpen} onClose={handleClose} key={id} to={`/notes/${id}`} */}
+                            {/* /> */}
+                        </CardContent>
+                    </Card>
+                )
+                )}
+            </Container>
         </>
-    );
+    )
   }
