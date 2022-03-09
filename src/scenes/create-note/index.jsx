@@ -81,7 +81,7 @@ export const CreateNote = () => {
     const EditButtons = () => {
         if (id) {
             return (
-                <ButtonGroup variant="outlined" aria-label="outlined button group">
+                <> 
                     <Button
                     type="submit"
                     value="submit"
@@ -89,13 +89,14 @@ export const CreateNote = () => {
                     >
                         Save
                     </Button>
-                    <Link to={`/`}><Button>Back</Button></Link>
-                    <Button color="error" onClick={() => deleteNote(id)}>DELETE</Button>
-                </ButtonGroup>
+                    <Button color="error" onClick={() => deleteNote(id)}>
+                        DELETE
+                    </Button>
+                </>
             )
         } else {
             return (
-                <ButtonGroup variant="outlined" aria-label="outlined button group">
+                <>
                     <Button
                         type="submit"
                         value="submit"
@@ -103,8 +104,7 @@ export const CreateNote = () => {
                         >
                             Create
                     </Button>
-                    <Link to={`/`}><Button>Back</Button></Link>
-                </ButtonGroup>
+                </>
             )
         }
     }
@@ -113,7 +113,9 @@ export const CreateNote = () => {
         <>
             {loading && <p className="loading">Loading...</p>}
             {error && <p className="error">{errorMessage}</p>}
-            <Container>
+            <Container
+            sx={{mt:3}}
+            >
                 <form onSubmit={createNote}>
                     <TextField
                         id="title"
@@ -122,6 +124,7 @@ export const CreateNote = () => {
                         label="Title"
                         variant="outlined"
                         fullWidth
+                        sx={{m: 1}}
                     />
                     <TextField
                         id="body"
@@ -132,17 +135,17 @@ export const CreateNote = () => {
                         multiline
                         fullWidth
                         minRows={10}
+                        sx={{m: 1}}
                     />
-                    {/* conditional show create if new, show update if edit */}
-                    {/* <Button
-                    type="submit"
-                    value="submit"
-                    variant="outlined"
-                    >
-                        Save
-                    </Button> */}
-                    <EditButtons/>
-                    {/* <button value="Discard"/> */}
+                    {/* conditional show create if new, show save and delete if edit */}
+                    <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{m:1}}>
+                        <Button
+                         component={Link}
+                         to='/'>
+                            Back
+                        </Button>
+                        <EditButtons/>
+                    </ButtonGroup>
                 </form>
             </Container>
         </>

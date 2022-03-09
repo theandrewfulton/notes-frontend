@@ -16,7 +16,6 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import CssBaseline from '@mui/material/CssBaseline'
 import Container from '@mui/material/Container'
 
 
@@ -61,7 +60,6 @@ import Container from '@mui/material/Container'
             {loading && <p className="loading">Loading...</p>}
             {error && <p className="error">{errorMessage}</p>}
             <Link to ="/notes/create"><Button variant="outlined">New Note</Button></Link>
-            <CssBaseline />
         <Container 
         maxWidth="100"
         sx={{
