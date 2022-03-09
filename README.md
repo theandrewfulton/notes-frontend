@@ -77,7 +77,7 @@ Please note the following notes were tested on Linux and should also work for ma
 
 ## Frontend
 
-[Install Node.js](https://nodejs.org/en/) or v[ia NodeSource](https://github.com/nodesource/distributions/blob/master/README.md) if using a package manager in Linux
+[Install Node.js](https://nodejs.org/en/) or [via NodeSource](https://github.com/nodesource/distributions/blob/master/README.md) if using a package manager in Linux
 
 [Install Yarn](https://yarnpkg.com/getting-started/install) (or just use npm - which ships with Node.js)
 
