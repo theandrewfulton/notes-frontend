@@ -50,6 +50,12 @@ return (
             mt:3
         }}
     >
+        <Typography
+            variant="h3"
+            textAlign="center"
+        >
+            Sign Up
+        </Typography>
         {/* Sign up form */}
         <form onSubmit={signUp}>
             <TextField
