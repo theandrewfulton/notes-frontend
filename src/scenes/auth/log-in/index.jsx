@@ -11,10 +11,12 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import LinearProgress from '@mui/material/LinearProgress'
 
 export const LogIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
 
@@ -23,7 +25,8 @@ export const LogIn = () => {
     const logIn = async (e) => {
         // prevent default form behaviour
         e.preventDefault()
-        
+        // set loading status
+        setLoading(true)
         try {
             const { data } = await backend.post("/auth/login", {
                 email,
@@ -38,11 +41,15 @@ export const LogIn = () => {
         } catch (error) {
             // If Fail:
             // error message yere
+            // stop loading
+            setLoading(false)
         }
         
     }
 
     return (
+        <>
+        {loading && <LinearProgress />}
         <Container
             sx={{
                 mt:3
@@ -112,5 +119,6 @@ export const LogIn = () => {
                 Sign Up
             </Button>
         </Container>
+        </>
     )
     }
