@@ -19,6 +19,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import LinearProgress from '@mui/material/LinearProgress'
+import Grid from '@mui/material/Grid'
 
 
   
@@ -115,14 +116,26 @@ import LinearProgress from '@mui/material/LinearProgress'
                     )
                     )
                 ):(
-                    <Typography
-                        variant="body2"
-                        component="p"
-                        textAlign="center"
-                    >
-                        It looks like you don't have any notes yet. <br/>
-                        Click the New Note button to create your first one.
-                    </Typography>
+                    <Grid
+                        container
+                        spacing={0}
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        style={{ minHeight: '100vh' }}
+                  >
+                        <Grid item xs={3}>
+                            <Typography
+                                variant="body2"
+                                component="p"
+                                textAlign="center"
+                            >
+                                It doesn't look like you have any notes yet. <br/>
+                                Click the New Note button to create your first one.
+                            </Typography>
+                        </Grid>   
+                     
+                    </Grid> 
                 )
                 }
             </Container>
