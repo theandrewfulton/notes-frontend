@@ -55,7 +55,6 @@ import LinearProgress from '@mui/material/LinearProgress'
         })
       .finally ((setLoading(false)))
     }, [])
-
     return (
         <>
             {loading && <LinearProgress />}
@@ -76,42 +75,54 @@ import LinearProgress from '@mui/material/LinearProgress'
                 </Button>
             </Box>
             <Container 
-            maxWidth="100"
-            sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                mb: 5,
-            }}
+                maxWidth="100"
+                sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    mb: 5,
+                }}
             >
-                {notes.map(({id, title, body, created_at}, index) => (
-                    <Card
-                        component={Link}
-                        to={`/notes/update/${id}`}
-                        key={id}
-                        sx={{
-                            width: 300,
-                            height: 300,
-                            margin: 1,
-                        }}
+                {notes.length >0 ? (
+                    notes.map(({id, title, body, created_at}, index) => (
+                        <Card
+                            component={Link}
+                            to={`/notes/update/${id}`}
+                            key={id}
+                            sx={{
+                                width: 300,
+                                height: 300,
+                                margin: 1,
+                            }}
+                        >
+                            <CardContent>
+                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                    {dateHelper({created_at})}
+                                </Typography>
+                                <Typography variant="h5" component="div">
+                                    {title}
+                                </Typography>
+                                <Typography variant="body2">
+                                    {/* substring shows characters between 0 and x in the body. This can be used to show more or less characters in the synopsis */}
+                                    {body.substring(0, 400)}
+                                </Typography>
+                                {/* <FormDialog component={Link} open={handleClickOpen} onClose={handleClose} key={id} to={`/notes/${id}`} */}
+                                {/* /> */}
+                            </CardContent>
+                        </Card>
+                    )
+                    )
+                ):(
+                    <Typography
+                        variant="body2"
+                        component="p"
+                        textAlign="center"
                     >
-                        <CardContent>
-                            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                {dateHelper({created_at})}
-                            </Typography>
-                            <Typography variant="h5" component="div">
-                                {title}
-                            </Typography>
-                            <Typography variant="body2">
-                                {/* substring shows characters between 0 and x in the body. This can be used to show more or less characters in the synopsis */}
-                                {body.substring(0, 400)}
-                            </Typography>
-                            {/* <FormDialog component={Link} open={handleClickOpen} onClose={handleClose} key={id} to={`/notes/${id}`} */}
-                            {/* /> */}
-                        </CardContent>
-                    </Card>
+                        It looks like you don't have any notes yet. <br/>
+                        Click the New Note button create your first one.
+                    </Typography>
                 )
-                )}
+                }
             </Container>
         </>
     )
