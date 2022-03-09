@@ -48,15 +48,18 @@ import Grid from '@mui/material/Grid'
     }
 
     const getNotes = async () => {
-    const { data } = await backend.get('./notes')
-        setNotes(data)
-        setLoading(false)
-    //   .then(({ data }) => setNotes(data))
-    //   .catch((error) => {
-        // setError(true)  
-        // setErrorMessage(error.message)
-        // })
-    //   .finally ((setLoading(false)))
+        await backend.get('./notes')
+        .then(({ data }) => {
+            setNotes(data)
+            // setLoading(false)
+        })
+      .catch((error) => {
+        setError(true)  
+        setErrorMessage(error.message)
+        })
+      .finally(() => {
+          setLoading(false)
+        })
     }
     useEffect(() => {
       getNotes()
