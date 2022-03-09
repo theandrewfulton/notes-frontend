@@ -47,14 +47,19 @@ import Grid from '@mui/material/Grid'
         )
     }
 
+    const getNotes = async () => {
+    const { data } = await backend.get('./notes')
+        setNotes(data)
+        setLoading(false)
+    //   .then(({ data }) => setNotes(data))
+    //   .catch((error) => {
+        // setError(true)  
+        // setErrorMessage(error.message)
+        // })
+    //   .finally ((setLoading(false)))
+    }
     useEffect(() => {
-      backend.get('./notes')
-      .then(({ data }) => setNotes(data))
-      .catch((error) => {
-        setError(true)  
-        setErrorMessage(error.message)
-        })
-      .finally ((setLoading(false)))
+      getNotes()
     }, [])
     return (
         <>
@@ -86,8 +91,8 @@ import Grid from '@mui/material/Grid'
             >
                 {/* If there are any notes fetched from the backend, map them into cards
                 Otherwise display a message saying there aren't any notes */}
-                {notes.length >0 ? (
-                    notes.map(({id, title, body, created_at}, index) => (
+                {/* {notes.length >0 ? ( */}
+                    {notes.map(({id, title, body, created_at}, index) => (
                         <Card
                             component={Link}
                             to={`/notes/update/${id}`}
@@ -115,28 +120,28 @@ import Grid from '@mui/material/Grid'
                         </Card>
                     )
                     )
-                ):(
-                    <Grid
-                        container
-                        spacing={0}
-                        direction="column"
-                        alignItems="center"
-                        justifyContent="center"
-                        style={{ minHeight: '100vh' }}
-                  >
-                        <Grid item xs={3}>
-                            <Typography
-                                variant="body2"
-                                component="p"
-                                textAlign="center"
-                            >
-                                It doesn't look like you have any notes yet. <br/>
-                                Click the New Note button to create your first one.
-                            </Typography>
-                        </Grid>   
+                // ):(
+                //     <Grid
+                //         container
+                //         spacing={0}
+                //         direction="column"
+                //         alignItems="center"
+                //         justifyContent="center"
+                //         style={{ minHeight: '100vh' }}
+                //   >
+                //         <Grid item xs={3}>
+                //             <Typography
+                //                 variant="body2"
+                //                 component="p"
+                //                 textAlign="center"
+                //             >
+                //                 It doesn't look like you have any notes yet. <br/>
+                //                 Click the New Note button to create your first one.
+                //             </Typography>
+                //         </Grid>   
                      
-                    </Grid> 
-                )
+                //     </Grid> 
+                // )
                 }
             </Container>
         </>
