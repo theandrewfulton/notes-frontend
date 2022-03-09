@@ -83,6 +83,8 @@ import LinearProgress from '@mui/material/LinearProgress'
                     mb: 5,
                 }}
             >
+                {/* If there are any notes fetched from the backend, map them into cards
+                Otherwise display a message saying there aren't any notes */}
                 {notes.length >0 ? (
                     notes.map(({id, title, body, created_at}, index) => (
                         <Card
