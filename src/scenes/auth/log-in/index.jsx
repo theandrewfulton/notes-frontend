@@ -49,76 +49,76 @@ export const LogIn = () => {
 
     return (
         <>
-        {loading && <LinearProgress />}
-        <Container
-            sx={{
-                mt:3
-            }}
-        >
-        <Typography
-            variant="h3"
-            textAlign="center"
-        >
-            Log In
-        </Typography>
-            {/* Login form */}
-            <form onSubmit={logIn}>
-                <TextField
-                    id="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                    label="email"
-                    variant="outlined"
-                    fullWidth
-                    required
-                    sx={{
-                        m: 1
-                    }}
-                />
-                <TextField
-                    id="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                    label="password"
-                    variant="outlined"
-                    type="password"
-                    fullWidth
-                    required
-                    sx={{
-                        m: 1
-                    }}
-                />
-                <Button
-                    type="submit"
-                    value="submit"
-                    variant="outlined"
-                    sx={{
-                        m: 1
-                    }}
-                    >
-                        Log In
-                </Button>
-            </form>
-
-            {/* Link to Sign Up */}
+            {loading && <LinearProgress />}
+            <Container
+                sx={{
+                    mt:3
+                }}
+            >
             <Typography
-                sx={{
-                    m: 1
-                }}
+                variant="h3"
+                textAlign="center"
             >
-                Don't have an account yet?
+                Log In
             </Typography>
-            <Button
-                component={Link}
-                to={`/sign-up`}
-                variant="outlined"
-                sx={{
-                    m: 1
-                }}
-            >
-                Sign Up
-            </Button>
-        </Container>
+                {/* Login form */}
+                <form onSubmit={logIn}>
+                    <TextField
+                        id="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        label="email"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        sx={{
+                            m: 1
+                        }}
+                    />
+                    <TextField
+                        id="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        label="password"
+                        variant="outlined"
+                        type="password"
+                        fullWidth
+                        required
+                        sx={{
+                            m: 1
+                        }}
+                    />
+                    <Button
+                        type="submit"
+                        value="submit"
+                        variant="outlined"
+                        sx={{
+                            m: 1
+                        }}
+                        >
+                            Log In
+                    </Button>
+                </form>
+
+                {/* Link to Sign Up */}
+                <Typography
+                    sx={{
+                        m: 1
+                    }}
+                >
+                    Don't have an account yet?
+                </Typography>
+                <Button
+                    component={Link}
+                    to={`/sign-up`}
+                    variant="outlined"
+                    sx={{
+                        m: 1
+                    }}
+                >
+                    Sign Up
+                </Button>
+            </Container>
         </>
     )
     }
