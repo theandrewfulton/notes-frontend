@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import { backend } from "../../data"
 
 // imports for Material-ui
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Container from '@mui/material/Container'
+import ButtonGroup from '@mui/material/ButtonGroup'
 
 
 export const CreateNote = () => {
@@ -43,7 +44,7 @@ export const CreateNote = () => {
                 })
                 // if success:
                 setLoading(false)
-                navigate(`/notes/${id}`)
+                navigate(`/`)
             } else {
                 await backend.post("/notes", {
                     title,
@@ -62,11 +63,59 @@ export const CreateNote = () => {
         }
     }
 
+    // List delete method
+    const deleteNote = async (id, index) => {
+        // set loading to true 
+        setLoading(true)
+        try {
+          // send request to backend
+          await backend.delete(`/notes/${id}`)
+          navigate("/")
+        } catch (error) {
+            setError(true)  
+            setErrorMessage(error.message)
+        }
+  
+      }
+
+    const EditButtons = () => {
+        if (id) {
+            return (
+                <> 
+                    <Button
+                    type="submit"
+                    value="submit"
+                    variant="outlined"
+                    >
+                        Save
+                    </Button>
+                    <Button color="error" onClick={() => deleteNote(id)}>
+                        DELETE
+                    </Button>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Button
+                        type="submit"
+                        value="submit"
+                        variant="outlined"
+                        >
+                            Create
+                    </Button>
+                </>
+            )
+        }
+    }
+
     return (
         <>
             {loading && <p className="loading">Loading...</p>}
             {error && <p className="error">{errorMessage}</p>}
-            <Container>
+            <Container
+            sx={{mt:3}}
+            >
                 <form onSubmit={createNote}>
                     <TextField
                         id="title"
@@ -75,6 +124,7 @@ export const CreateNote = () => {
                         label="Title"
                         variant="outlined"
                         fullWidth
+                        sx={{m: 1}}
                     />
                     <TextField
                         id="body"
@@ -85,16 +135,17 @@ export const CreateNote = () => {
                         multiline
                         fullWidth
                         minRows={10}
+                        sx={{m: 1}}
                     />
-                    {/* conditional show create if new, show update if edit */}
-                    <Button
-                    type="submit"
-                    value="submit"
-                    variant="outlined"
-                    >
-                        Save
-                    </Button>
-                    {/* <button value="Discard"/> */}
+                    {/* conditional show create if new, show save and delete if edit */}
+                    <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{m:1}}>
+                        <Button
+                         component={Link}
+                         to='/'>
+                            Back
+                        </Button>
+                        <EditButtons/>
+                    </ButtonGroup>
                 </form>
             </Container>
         </>

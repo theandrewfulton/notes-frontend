@@ -1,9 +1,12 @@
 import './App.css';
 // import Roboto font
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import '@fontsource/roboto/300.css'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
+import '@fontsource/roboto/700.css'
+
+// import Material-UI components
+import CssBaseline from '@mui/material/CssBaseline'
 
 
 // import react-router
@@ -23,7 +26,6 @@ import { Footer } from './scenes/footer'
 // import pages
 import { Notes } from './scenes/notes'
 import { CreateNote } from './scenes/create-note'
-import { NoteDetails } from './scenes/note-details'
 import { LogIn } from './scenes/auth/log-in'
 import { LogOut } from './scenes/auth/log-out'
 import { SignUp } from './scenes/auth/sign-up'
@@ -32,6 +34,7 @@ import { SignUp } from './scenes/auth/sign-up'
 function App() {
   return (
     <>
+      <CssBaseline />
       <Router>
         <Header />
         <Routes>
@@ -53,9 +56,6 @@ function App() {
           <Route path='/notes/update/:id'
             element={<CreateNote/>}
             // element={<NoteDialog}
-          />
-          <Route path='/notes/:id'
-            element={<NoteDetails/>}
           />
           {/* <Route path='/users/:id'
             element={<UserDetails/>}
