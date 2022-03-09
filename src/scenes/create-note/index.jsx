@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField'
 import Container from '@mui/material/Container'
 import ButtonGroup from '@mui/material/ButtonGroup'
 import LinearProgress from '@mui/material/LinearProgress'
+import Skeleton from '@mui/material/Skeleton'
 
 
 export const CreateNote = () => {
@@ -122,35 +123,93 @@ export const CreateNote = () => {
             sx={{mt:3}}
             >
                 <form onSubmit={createNote}>
-                    <TextField
-                        id="title"
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title}
-                        label="Title"
-                        variant="outlined"
-                        fullWidth
-                        sx={{m: 1}}
-                    />
-                    <TextField
-                        id="body"
-                        onChange={(e) => setBody(e.target.value)}
-                        value={body}
-                        label="Body"
-                        placeholder="Body"
-                        multiline
-                        fullWidth
-                        minRows={10}
-                        sx={{m: 1}}
-                    />
-                    {/* conditional show create if new, show save and delete if edit */}
-                    <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{m:1}}>
-                        <Button
-                         component={Link}
-                         to='/'>
-                            Back
-                        </Button>
-                        <EditButtons/>
-                    </ButtonGroup>
+                    {loading ? (
+                            <>
+                                <Skeleton
+                                    variant="text"
+                                    animation="wave"
+                                    width="fullWidth"
+                                >
+                                    <TextField
+                                    id="title"
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    value={title}
+                                    label="Title"
+                                    variant="outlined"
+                                    fullWidth
+                                    sx={{
+                                        m: 1
+                                    }}
+                                />
+                                </Skeleton>
+                                <Skeleton
+                                variant="rectangular"
+                                animation="wave"
+                                width="fullWidth"
+                                >
+                                    <TextField
+                                    id="body"
+                                    onChange={(e) => setBody(e.target.value)}
+                                    value={body}
+                                    label="Body"
+                                    placeholder="Body"
+                                    multiline
+                                    fullWidth
+                                    minRows={10}
+                                    sx={{m: 1}}
+                                    />
+                                    
+                                </Skeleton>
+                                <Skeleton
+                                variant="text"
+                                animation="wave"
+                                >
+                                    <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{m:1}}>
+                                        <Button
+                                        component={Link}
+                                        to='/'>
+                                            Back
+                                        </Button>
+                                        <EditButtons/>
+                                    </ButtonGroup>
+                                </Skeleton>
+                            </>
+                        ):(
+                            <>
+                                <TextField
+                                    id="title"
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    value={title}
+                                    label="Title"
+                                    variant="outlined"
+                                    fullWidth
+                                    sx={{
+                                        m: 1
+                                    }}
+                                />
+                                <TextField
+                                    id="body"
+                                    onChange={(e) => setBody(e.target.value)}
+                                    value={body}
+                                    label="Body"
+                                    placeholder="Body"
+                                    multiline
+                                    fullWidth
+                                    minRows={10}
+                                    sx={{m: 1}}
+                                />
+                                {/* conditional show create if new, show save and delete if edit */}
+                                <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{m:1}}>
+                                    <Button
+                                    component={Link}
+                                    to='/'>
+                                        Back
+                                    </Button>
+                                    <EditButtons/>
+                                </ButtonGroup>
+                            </>
+                        )
+                    }
                 </form>
             </Container>
         </>
