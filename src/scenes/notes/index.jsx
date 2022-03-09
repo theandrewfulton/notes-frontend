@@ -18,6 +18,7 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import LinearProgress from '@mui/material/LinearProgress'
 
 
   
@@ -57,7 +58,7 @@ import Container from '@mui/material/Container'
 
     return (
         <>
-            {loading && <p className="loading">Loading...</p>}
+            {loading && <LinearProgress />}
             {error && <p className="error">{errorMessage}</p>}
             <Box
                 display="flex"
