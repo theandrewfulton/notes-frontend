@@ -43,7 +43,17 @@ export const LogIn = () => {
     }
 
     return (
-        <Container>
+        <Container
+            sx={{
+                mt:3
+            }}
+        >
+        <Typography
+            variant="h3"
+            textAlign="center"
+        >
+            Log In
+        </Typography>
             {/* Login form */}
             <form onSubmit={logIn}>
                 <TextField
@@ -54,6 +64,9 @@ export const LogIn = () => {
                     variant="outlined"
                     fullWidth
                     required
+                    sx={{
+                        m: 1
+                    }}
                 />
                 <TextField
                     id="password"
@@ -64,21 +77,40 @@ export const LogIn = () => {
                     type="password"
                     fullWidth
                     required
+                    sx={{
+                        m: 1
+                    }}
                 />
                 <Button
                     type="submit"
                     value="submit"
                     variant="outlined"
+                    sx={{
+                        m: 1
+                    }}
                     >
                         Log In
                 </Button>
             </form>
 
             {/* Link to Sign Up */}
-            <Typography>
+            <Typography
+                sx={{
+                    m: 1
+                }}
+            >
                 Don't have an account yet?
             </Typography>
-            <Link to={`/sign-up`}><Button variant="outlined">Sign Up</Button></Link>
+            <Button
+                component={Link}
+                to={`/sign-up`}
+                variant="outlined"
+                sx={{
+                    m: 1
+                }}
+            >
+                Sign Up
+            </Button>
         </Container>
     )
     }
