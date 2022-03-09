@@ -131,43 +131,51 @@ export const CreateNote = () => {
                                     width="fullWidth"
                                 >
                                     <TextField
-                                    id="title"
-                                    onChange={(e) => setTitle(e.target.value)}
-                                    value={title}
-                                    label="Title"
-                                    variant="outlined"
-                                    fullWidth
-                                    sx={{
-                                        m: 1
-                                    }}
-                                />
+                                        id="title"
+                                        onChange={(e) => setTitle(e.target.value)}
+                                        value={title}
+                                        label="Title"
+                                        variant="outlined"
+                                        fullWidth
+                                        sx={{
+                                            m: 1
+                                        }}
+                                    />
                                 </Skeleton>
                                 <Skeleton
-                                variant="rectangular"
-                                animation="wave"
-                                width="fullWidth"
+                                    variant="rectangular"
+                                    animation="wave"
+                                    width="fullWidth"
                                 >
                                     <TextField
-                                    id="body"
-                                    onChange={(e) => setBody(e.target.value)}
-                                    value={body}
-                                    label="Body"
-                                    placeholder="Body"
-                                    multiline
-                                    fullWidth
-                                    minRows={10}
-                                    sx={{m: 1}}
+                                        id="body"
+                                        onChange={(e) => setBody(e.target.value)}
+                                        value={body}
+                                        label="Body"
+                                        placeholder="Body"
+                                        multiline
+                                        fullWidth
+                                        minRows={10}
+                                        sx={{
+                                            m: 1
+                                        }}
                                     />
                                     
                                 </Skeleton>
                                 <Skeleton
-                                variant="text"
-                                animation="wave"
+                                    variant="text"
+                                    animation="wave"
                                 >
-                                    <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{m:1}}>
+                                    <ButtonGroup
+                                        variant="outlined"
+                                        aria-label="outlined button group"
+                                        sx={{
+                                            m:1
+                                        }}>
                                         <Button
-                                        component={Link}
-                                        to='/'>
+                                            component={Link}
+                                            to='/'
+                                        >
                                             Back
                                         </Button>
                                         <EditButtons/>
@@ -196,13 +204,22 @@ export const CreateNote = () => {
                                     multiline
                                     fullWidth
                                     minRows={10}
-                                    sx={{m: 1}}
+                                    sx={{
+                                        m: 1
+                                    }}
                                 />
                                 {/* conditional show create if new, show save and delete if edit */}
-                                <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{m:1}}>
+                                <ButtonGroup
+                                    variant="outlined"
+                                    aria-label="outlined button group"
+                                    sx={{
+                                        m:1
+                                        }}
+                                    >
                                     <Button
-                                    component={Link}
-                                    to='/'>
+                                        component={Link}
+                                        to='/'
+                                    >
                                         Back
                                     </Button>
                                     <EditButtons/>
