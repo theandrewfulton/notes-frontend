@@ -46,21 +46,24 @@ import Grid from '@mui/material/Grid'
             d.toLocaleString()
         )
     }
-
+    // get notes from backend
     const getNotes = async () => {
         await backend.get('./notes')
+        // take data from backend and update notes state
         .then(({ data }) => {
             setNotes(data)
-            // setLoading(false)
         })
+        // if it fails, update the error state with the error message
       .catch((error) => {
         setError(true)  
         setErrorMessage(error.message)
         })
+        // regardless of success or error, clean up by setting loading state to false
       .finally(() => {
           setLoading(false)
         })
     }
+    // get the backend data on first render
     useEffect(() => {
       getNotes()
     }, [])
