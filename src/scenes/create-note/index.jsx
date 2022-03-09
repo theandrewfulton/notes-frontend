@@ -7,13 +7,14 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Container from '@mui/material/Container'
 import ButtonGroup from '@mui/material/ButtonGroup'
+import LinearProgress from '@mui/material/LinearProgress'
 
 
 export const CreateNote = () => {
     const {id} = useParams()
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
 
@@ -21,11 +22,15 @@ export const CreateNote = () => {
 
     useEffect(() => {
         if(id) {
+            setLoading(true)
             backend.get(`/notes/${id}`)
             .then(({ data }) => {
                 setTitle(data.title)
                 setBody(data.body)
+                setLoading(false)
             })
+        } else {
+            setLoading(false)
         }
     },[id],)
 
@@ -111,7 +116,7 @@ export const CreateNote = () => {
 
     return (
         <>
-            {loading && <p className="loading">Loading...</p>}
+            {loading && <LinearProgress />}
             {error && <p className="error">{errorMessage}</p>}
             <Container
             sx={{mt:3}}
