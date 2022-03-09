@@ -119,7 +119,7 @@ import LinearProgress from '@mui/material/LinearProgress'
                         textAlign="center"
                     >
                         It looks like you don't have any notes yet. <br/>
-                        Click the New Note button create your first one.
+                        Click the New Note button to create your first one.
                     </Typography>
                 )
                 }
