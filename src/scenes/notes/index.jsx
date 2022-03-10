@@ -69,10 +69,12 @@ const SkeletonBox = ({notesToRender}) => {
                 >
                     <Skeleton
                         variant="text"
+                        animation="wave"
                         width={250}
                     />
                     <Skeleton
                         variant="text"
+                        animation="wave"
                         width={250}
                     />
                     <Skeleton
