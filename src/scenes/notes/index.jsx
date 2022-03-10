@@ -21,7 +21,33 @@ import Container from '@mui/material/Container'
 import LinearProgress from '@mui/material/LinearProgress'
 import Grid from '@mui/material/Grid'
 
-
+// Message to display when no notes are retrieved from the backend
+const NoNotes = () => {
+    return (
+        // grid container to horizontally and vertically center the no notes message
+        <Grid
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            style={{ minHeight: '100vh' }}
+        >
+            {/* no notes message */}
+            <Grid item xs={3}>
+                <Typography
+                    variant="body2"
+                    component="p"
+                    textAlign="center"
+                >
+                    It doesn't look like you have any notes yet. <br/>
+                    Click the New Note button to create your first one.
+                </Typography>
+            </Grid>   
+            
+        </Grid>
+    )
+}
   
   export const Notes = () => {
     // const {id} = useParams()
@@ -136,28 +162,13 @@ import Grid from '@mui/material/Grid'
                     )
                     )
                 ):(
-                    // grid container to horizontally and vertically center the no notes message
-                    <Grid
-                        container
-                        spacing={0}
-                        direction="column"
-                        alignItems="center"
-                        justifyContent="center"
-                        style={{ minHeight: '100vh' }}
-                  >
-                      {/* no notes message */}
-                        <Grid item xs={3}>
-                            <Typography
-                                variant="body2"
-                                component="p"
-                                textAlign="center"
-                            >
-                                It doesn't look like you have any notes yet. <br/>
-                                Click the New Note button to create your first one.
-                            </Typography>
-                        </Grid>   
-                     
-                    </Grid>
+                    // If loading state is still set to true, show the loading animation
+                    loading ? (
+                        "Loading"
+                    ): (
+                        // otherwise show the No Notes component
+                        < NoNotes />
+                    )
                 )
                 }
             </Container>
