@@ -79,7 +79,7 @@ Please note the following notes were tested on Linux and should also work for ma
 
 [Install Node.js](https://nodejs.org/en/) or [via NodeSource](https://github.com/nodesource/distributions/blob/master/README.md) if using a package manager in Linux
 
-[Install Yarn](https://yarnpkg.com/getting-started/install) (or just use npm - which ships with Node.js)
+[Install Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) (or just use npm - which ships with Node.js)
 
 [Install Git](https://git-scm.com/) if you want to clone the repository using the command line and use git for version control
 
