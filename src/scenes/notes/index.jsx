@@ -202,8 +202,8 @@ const SkeletonBox = ({notesToRender}) => {
                 ):(
                     // If loading state is still set to true, show the loading animation
                     loading ? (
-                        // Show the sloading skeleton box 9 times
-                        <SkeletonBox notesToRender={9}/>
+                        // Show the sloading skeleton box 12 times
+                        <SkeletonBox notesToRender={12}/>
                     ): (
                         // otherwise show the No Notes component
                         < NoNotes />
