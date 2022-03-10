@@ -39,7 +39,7 @@ import Grid from '@mui/material/Grid'
     // setOpen(false);
     // };
 
-
+// date helper to take the note's created date from the backend and formats it to the browser's locale
     const dateHelper = (date) => {
         const d = new Date(date.created_at)
         return (
@@ -69,12 +69,16 @@ import Grid from '@mui/material/Grid'
     }, [])
     return (
         <>
+            {/* loading indicator */}
             {loading && <LinearProgress />}
+            {/* error messages */}
             {error && <p className="error">{errorMessage}</p>}
+            {/* container to centre New Note button */}
             <Box
                 display="flex"
                 justifyContent="center"
             >
+                {/* New Note button */}
                 <Button
                     component={Link}
                     to='/notes/create'
@@ -86,6 +90,7 @@ import Grid from '@mui/material/Grid'
                     New Note
                 </Button>
             </Box>
+            {/* flexbox container for note cards */}
             <Container 
                 maxWidth="100"
                 sx={{
@@ -99,6 +104,7 @@ import Grid from '@mui/material/Grid'
                 Otherwise display a message saying there aren't any notes */}
                 {notes.length > 0 ? (
                     notes.map(({id, title, body, created_at}, index) => (
+                        // clicking the card opens the view/edit scene
                         <Card
                             component={Link}
                             to={`/notes/update/${id}`}
@@ -110,12 +116,15 @@ import Grid from '@mui/material/Grid'
                             }}
                         >
                             <CardContent>
+                                {/* date created */}
                                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                                     {dateHelper({created_at})}
                                 </Typography>
+                                {/* Note title */}
                                 <Typography variant="h5" component="div">
                                     {title}
                                 </Typography>
+                                {/* first 400 characters of note body */}
                                 <Typography variant="body2">
                                     {/* substring shows characters between 0 and x in the body. This can be used to show more or less characters in the synopsis */}
                                     {body.substring(0, 400)}
@@ -127,6 +136,7 @@ import Grid from '@mui/material/Grid'
                     )
                     )
                 ):(
+                    // grid container to horizontally and vertically center the no notes message
                     <Grid
                         container
                         spacing={0}
@@ -135,6 +145,7 @@ import Grid from '@mui/material/Grid'
                         justifyContent="center"
                         style={{ minHeight: '100vh' }}
                   >
+                      {/* no notes message */}
                         <Grid item xs={3}>
                             <Typography
                                 variant="body2"
