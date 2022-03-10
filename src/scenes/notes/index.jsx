@@ -20,6 +20,7 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import LinearProgress from '@mui/material/LinearProgress'
 import Grid from '@mui/material/Grid'
+import Skeleton from '@mui/material/Skeleton'
 
 // Message to display when no notes are retrieved from the backend
 const NoNotes = () => {
@@ -48,6 +49,43 @@ const NoNotes = () => {
         </Grid>
     )
 }
+//  SkeletonBox takes a number and repeats the box containing a skeleton 
+// element for the date, title and body by mapping it to an array n times
+const SkeletonBox = ({notesToRender}) => {
+    return (
+      <>
+            {Array(notesToRender)
+                .fill(1)
+                .map((card, index) => (
+                <Box
+                    sx={{
+                        width: 300,
+                        height: 300,
+                        margin: 1,
+                        display: "flex",
+                        flexWrap: 'wrap',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Skeleton
+                        variant="text"
+                        width={250}
+                    />
+                    <Skeleton
+                        variant="text"
+                        width={250}
+                    />
+                    <Skeleton
+                        variant="rectangular"
+                        animation="wave"
+                        width={250}
+                        height={200}
+                    />
+                </Box>
+            ))}
+      </>
+    );
+  };
   
   export const Notes = () => {
     // const {id} = useParams()
@@ -164,7 +202,8 @@ const NoNotes = () => {
                 ):(
                     // If loading state is still set to true, show the loading animation
                     loading ? (
-                        "Loading"
+                        // Show the sloading skeleton box 9 times
+                        <SkeletonBox notesToRender={9}/>
                     ): (
                         // otherwise show the No Notes component
                         < NoNotes />
