@@ -11,10 +11,12 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import LinearProgress from '@mui/material/LinearProgress'
 
 export const LogIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
 
@@ -23,7 +25,8 @@ export const LogIn = () => {
     const logIn = async (e) => {
         // prevent default form behaviour
         e.preventDefault()
-        
+        // set loading status
+        setLoading(true)
         try {
             const { data } = await backend.post("/auth/login", {
                 email,
@@ -38,79 +41,84 @@ export const LogIn = () => {
         } catch (error) {
             // If Fail:
             // error message yere
+            // stop loading
+            setLoading(false)
         }
         
     }
 
     return (
-        <Container
-            sx={{
-                mt:3
-            }}
-        >
-        <Typography
-            variant="h3"
-            textAlign="center"
-        >
-            Log In
-        </Typography>
-            {/* Login form */}
-            <form onSubmit={logIn}>
-                <TextField
-                    id="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                    label="email"
-                    variant="outlined"
-                    fullWidth
-                    required
-                    sx={{
-                        m: 1
-                    }}
-                />
-                <TextField
-                    id="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                    label="password"
-                    variant="outlined"
-                    type="password"
-                    fullWidth
-                    required
-                    sx={{
-                        m: 1
-                    }}
-                />
-                <Button
-                    type="submit"
-                    value="submit"
-                    variant="outlined"
-                    sx={{
-                        m: 1
-                    }}
-                    >
-                        Log In
-                </Button>
-            </form>
-
-            {/* Link to Sign Up */}
+        <>
+            {loading && <LinearProgress />}
+            <Container
+                sx={{
+                    mt:3
+                }}
+            >
             <Typography
-                sx={{
-                    m: 1
-                }}
+                variant="h3"
+                textAlign="center"
             >
-                Don't have an account yet?
+                Log In
             </Typography>
-            <Button
-                component={Link}
-                to={`/sign-up`}
-                variant="outlined"
-                sx={{
-                    m: 1
-                }}
-            >
-                Sign Up
-            </Button>
-        </Container>
+                {/* Login form */}
+                <form onSubmit={logIn}>
+                    <TextField
+                        id="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        label="email"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        sx={{
+                            m: 1
+                        }}
+                    />
+                    <TextField
+                        id="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        label="password"
+                        variant="outlined"
+                        type="password"
+                        fullWidth
+                        required
+                        sx={{
+                            m: 1
+                        }}
+                    />
+                    <Button
+                        type="submit"
+                        value="submit"
+                        variant="outlined"
+                        sx={{
+                            m: 1
+                        }}
+                        >
+                            Log In
+                    </Button>
+                </form>
+
+                {/* Link to Sign Up */}
+                <Typography
+                    sx={{
+                        m: 1
+                    }}
+                >
+                    Don't have an account yet?
+                </Typography>
+                <Button
+                    component={Link}
+                    to={`/sign-up`}
+                    variant="outlined"
+                    sx={{
+                        m: 1
+                    }}
+                >
+                    Sign Up
+                </Button>
+            </Container>
+        </>
     )
     }

@@ -7,6 +7,7 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import LinearProgress from '@mui/material/LinearProgress'
 
 // grab backend to use based on environment and grab error helper
 import { backend } from '../../../data'
@@ -15,6 +16,7 @@ export const SignUp = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
 
@@ -24,7 +26,8 @@ export const SignUp = () => {
     const signUp = async (e) => {
         // prevent default form behaviour
         e.preventDefault()
-
+        // set loading status
+        setLoading(true)
         try {
             const { data } = await backend.post("/users", {
                 email,
@@ -40,94 +43,99 @@ export const SignUp = () => {
         } catch (error) {
             // If Fail:
             // error messages here
+            // stop loading
+            setLoading(false)
         }
         
     }
 
 return (
-    <Container
-        sx={{
-            mt:3
-        }}
-    >
-        <Typography
-            variant="h3"
-            textAlign="center"
-        >
-            Sign Up
-        </Typography>
-        {/* Sign up form */}
-        <form onSubmit={signUp}>
-            <TextField
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                label="email"
-                variant="outlined"
-                fullWidth
-                required
-                sx={{
-                    m: 1
-                }}
-            />
-            <TextField
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                label="password"
-                variant="outlined"
-                type="password"
-                fullWidth
-                required
-                sx={{
-                    m: 1
-                }}
-            />
-            <TextField
-                id="passwordConfirmation"
-                onChange={(e) => setPasswordConfirmation(e.target.value)}
-                value={passwordConfirmation}
-                label="confirm password"
-                variant="outlined"
-                type="password"
-                fullWidth
-                required
-                sx={{
-                    m: 1
-                }}
-            />
-            <Button
-                type="submit"
-                value="submit"
-                variant="outlined"
-                sx={{
-                    m: 1
-                }}
-                >
-                    Sign Up
-            </Button>
-        </form>
-
-        {/* Link to Log in */}
-        <Typography
+    <>
+        {loading && <LinearProgress />}
+        <Container
             sx={{
-                m: 1
+                mt:3
             }}
         >
-            Already have an account?
-        </Typography>
-        {/* <Link to={`/log-in`}> */}
-            <Button
-                component={Link}
-                to={`/log-in`}
-                variant="outlined"
+            <Typography
+                variant="h3"
+                textAlign="center"
+            >
+                Sign Up
+            </Typography>
+            {/* Sign up form */}
+            <form onSubmit={signUp}>
+                <TextField
+                    id="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    label="email"
+                    variant="outlined"
+                    fullWidth
+                    required
+                    sx={{
+                        m: 1
+                    }}
+                />
+                <TextField
+                    id="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    label="password"
+                    variant="outlined"
+                    type="password"
+                    fullWidth
+                    required
+                    sx={{
+                        m: 1
+                    }}
+                />
+                <TextField
+                    id="passwordConfirmation"
+                    onChange={(e) => setPasswordConfirmation(e.target.value)}
+                    value={passwordConfirmation}
+                    label="confirm password"
+                    variant="outlined"
+                    type="password"
+                    fullWidth
+                    required
+                    sx={{
+                        m: 1
+                    }}
+                />
+                <Button
+                    type="submit"
+                    value="submit"
+                    variant="outlined"
+                    sx={{
+                        m: 1
+                    }}
+                    >
+                        Sign Up
+                </Button>
+            </form>
+
+            {/* Link to Log in */}
+            <Typography
                 sx={{
                     m: 1
                 }}
             >
-                Log In
-            </Button>
-            {/* </Link> */}
-    </Container>
+                Already have an account?
+            </Typography>
+            {/* <Link to={`/log-in`}> */}
+                <Button
+                    component={Link}
+                    to={`/log-in`}
+                    variant="outlined"
+                    sx={{
+                        m: 1
+                    }}
+                >
+                    Log In
+                </Button>
+                {/* </Link> */}
+        </Container>
+    </>
 )
 }
