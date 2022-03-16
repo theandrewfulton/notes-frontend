@@ -22,7 +22,6 @@ import Container from '@mui/material/Container'
 import LinearProgress from '@mui/material/LinearProgress'
 import Grid from '@mui/material/Grid'
 import Skeleton from '@mui/material/Skeleton'
-import Alert from '@mui/material/Alert'
 
 // Message to display when no notes are retrieved from the backend
 const NoNotes = () => {
