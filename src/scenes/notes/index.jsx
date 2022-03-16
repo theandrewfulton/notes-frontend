@@ -7,6 +7,7 @@ import {
 
 import { backend } from '../../data'
 // import { FormDialog } from '../note-dialog'
+import { Error } from '../../error'
 
 
 
@@ -139,7 +140,7 @@ const SkeletonBox = ({notesToRender}) => {
             {/* loading indicator */}
             {loading && <LinearProgress />}
             {/* error messages */}
-            {error && <Alert variant="filled" severity="error">{errorMessage}</Alert>}
+            {error && <Error errorMessage={errorMessage}/>}
             {/* container to centre New Note button */}
             <Box
                 display="flex"
