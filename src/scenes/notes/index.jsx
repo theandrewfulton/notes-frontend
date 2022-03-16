@@ -21,6 +21,7 @@ import Container from '@mui/material/Container'
 import LinearProgress from '@mui/material/LinearProgress'
 import Grid from '@mui/material/Grid'
 import Skeleton from '@mui/material/Skeleton'
+import Alert from '@mui/material/Alert'
 
 // Message to display when no notes are retrieved from the backend
 const NoNotes = () => {
@@ -138,7 +139,7 @@ const SkeletonBox = ({notesToRender}) => {
             {/* loading indicator */}
             {loading && <LinearProgress />}
             {/* error messages */}
-            {error && <p className="error">{errorMessage}</p>}
+            {error && <Alert variant="filled" severity="error">{errorMessage}</Alert>}
             {/* container to centre New Note button */}
             <Box
                 display="flex"
