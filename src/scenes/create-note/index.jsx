@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 import { backend } from "../../data"
+// import error component
+import { Error } from '../../components/error'
 
 // imports for Material-ui
 import Button from '@mui/material/Button'
@@ -118,7 +120,8 @@ export const CreateNote = () => {
     return (
         <>
             {loading && <LinearProgress />}
-            {error && <p className="error">{errorMessage}</p>}
+            {/* error message */}
+            {error && <Error errorMessage={errorMessage}/>}
             <Container
             sx={{mt:3}}
             >
