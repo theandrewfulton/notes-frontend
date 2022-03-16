@@ -7,7 +7,7 @@ import {
 
 import { backend } from '../../data'
 // import { FormDialog } from '../note-dialog'
-import { Error } from '../../error'
+import { Error } from '../../components/error'
 
 
 
