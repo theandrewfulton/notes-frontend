@@ -1,3 +1,4 @@
+// import alert from material-ui
 import Alert from '@mui/material/Alert'
 
 export const Error = ({errorMessage}) => {
