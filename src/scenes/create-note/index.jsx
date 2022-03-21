@@ -52,7 +52,7 @@ export const CreateNote = () => {
                 })
                 // if success:
                 setLoading(false)
-                navigate(`/`)
+                navigate(`/notes`)
             } else {
                 await backend.post("/notes", {
                     title,
@@ -221,7 +221,7 @@ export const CreateNote = () => {
                                     >
                                     <Button
                                         component={Link}
-                                        to='/'
+                                        to='/notes'
                                     >
                                         Back
                                     </Button>
