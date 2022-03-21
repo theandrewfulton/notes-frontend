@@ -33,32 +33,76 @@ import { SignUp } from './scenes/auth/sign-up'
 // import { UserDetails } from './scenes/user/view'
 
 function App() {
+  const HomeHeader = () => {
+    return (
+      <Header pageType={"home"}/>
+    )
+  }
   return (
     <>
       <CssBaseline />
       <Router>
-        <Header />
+        {/* <Header /> */}
         <Routes>
-          <Route path="/"
-            element={<Home/>}
+         <Route
+            path="/"
+            element={
+              <>
+                <HomeHeader/>
+                <Home/>
+              </>
+            }
           />
-          <Route path="/notes"
-            element={<Notes/>}
+          <Route
+            path="/log-in"
+            element={
+              <>
+                <HomeHeader/>
+                <LogIn/>
+              </>
+            }
           />
-          <Route path="/log-in"
-              element={<LogIn/>}
+          <Route
+            path="/log-out"
+            element={
+              <LogOut/>
+            }
           />
-          <Route path="/log-out"
-              element={<LogOut/>}
+          <Route
+            path="/sign-up"
+            element={
+              <>
+                <HomeHeader/>
+                <SignUp/>
+              </>
+            }
           />
-          <Route path="/sign-up"
-              element={<SignUp/>}
+          <Route
+            path="/notes"
+            element={
+              <>
+                <Header/>
+                <Notes/>
+              </>
+            }
           />
-          <Route path='/notes/create'
-            element={<CreateNote/>}
+          <Route
+            path='/notes/create'
+            element={
+              <>
+                <Header/>
+                <CreateNote/>
+              </>
+          }
           />
-          <Route path='/notes/update/:id'
-            element={<CreateNote/>}
+          <Route
+            path='/notes/update/:id'
+            element={
+              <>
+                <Header/>
+                <CreateNote/>
+              </>
+            }
             // element={<NoteDialog}
           />
           {/* <Route path='/users/:id'

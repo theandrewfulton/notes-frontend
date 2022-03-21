@@ -36,10 +36,8 @@ const HeaderLink = props => {
 // array of pages to show in the header when on the homepage, login and logout
 const homePages = [
     <HeaderLink location="/" linkText="Home"/>,
-    // <HeaderLink location="/notes" linkText="Notes"/>,
     <HeaderLink location="/sign-up" linkText="Sign Up"/>,
     <HeaderLink location="/log-in" linkText="Log In"/>,
-    // <HeaderLink location="/log-out" linkText="Log Out"/>
 ]
 
 // array of pages to show in the header when on pages to do with notes
@@ -63,17 +61,17 @@ export const Header = ({pageType}) => {
     setAnchorElNav(null)
   }
 
-  // If the header component is called with the param pageType set to "notes", display
-  // the notePages array of links in the header, otherwise show the homePages array.
+  // If the header component is called with the param pageType set to "home", display
+  // the homePages array of links in the header, otherwise show the notePages array.
   // re-render when pageType changes
   useEffect(() => {
-    if (pageType === "notes") {
-      setPages(notePages)
-    } else {
+    if (pageType === "home") {
       setPages(homePages)
+    } else {
+      setPages(notePages)
     }
 },[pageType])
-  
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
