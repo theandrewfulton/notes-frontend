@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -31,16 +31,21 @@ const HeaderLink = props => {
     )
 }
 
-const pages = [
+const homePages = [
     <HeaderLink location="/" linkText="Home"/>,
-    <HeaderLink location="/notes" linkText="Notes"/>,
+    // <HeaderLink location="/notes" linkText="Notes"/>,
     <HeaderLink location="/sign-up" linkText="Sign Up"/>,
     <HeaderLink location="/log-in" linkText="Log In"/>,
-    <HeaderLink location="/log-out" linkText="Log Out"/>
+    // <HeaderLink location="/log-out" linkText="Log Out"/>
 ]
 
-export const Header = () => {
+const notePages = [
+  <HeaderLink location="/log-out" linkText="Log Out"/>
+]
+
+export const Header = ({pageType}) => {
   const [anchorElNav, setAnchorElNav] = useState(null)
+  const [pages, setPages] = useState([])
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
@@ -49,8 +54,16 @@ export const Header = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
+  useEffect(() => {
+    if (pageType === "notes") {
+      setPages(notePages)
+    } else {
+      setPages(homePages)
+    }
+},[pageType])
+  
 
-
+  console.log(pageType)
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
