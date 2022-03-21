@@ -39,7 +39,7 @@ export const SignUp = () => {
             // save JWT to local storage
             localStorage.setItem('jwt', data.token)
             // redirect to home page
-            navigate("/")
+            navigate("/notes")
         } catch (error) {
             // If Fail:
             // error messages here

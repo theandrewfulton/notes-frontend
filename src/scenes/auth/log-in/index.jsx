@@ -37,7 +37,7 @@ export const LogIn = () => {
             // save JWT to local storage
             localStorage.setItem('jwt', data.token)
             // redirect to home page
-            navigate("/")
+            navigate("/notes")
         } catch (error) {
             // If Fail:
             // error message yere

@@ -24,6 +24,7 @@ import { Footer } from './scenes/footer'
 
 
 // import pages
+import { Home } from './scenes/home'
 import { Notes } from './scenes/notes'
 import { CreateNote } from './scenes/create-note'
 import { LogIn } from './scenes/auth/log-in'
@@ -39,6 +40,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/"
+            element={<Home/>}
+          />
+          <Route path="/notes"
             element={<Notes/>}
           />
           <Route path="/log-in"

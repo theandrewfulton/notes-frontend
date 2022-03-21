@@ -33,6 +33,7 @@ const HeaderLink = props => {
 
 const pages = [
     <HeaderLink location="/" linkText="Home"/>,
+    <HeaderLink location="/notes" linkText="Notes"/>,
     <HeaderLink location="/sign-up" linkText="Sign Up"/>,
     <HeaderLink location="/log-in" linkText="Log In"/>,
     <HeaderLink location="/log-out" linkText="Log Out"/>

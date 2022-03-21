@@ -59,7 +59,7 @@ export const CreateNote = () => {
                     body
                 })
                 setLoading(false)
-                navigate("/")
+                navigate("/notes")
             }
         } catch (error) {
             // If fail:
@@ -78,7 +78,7 @@ export const CreateNote = () => {
         try {
           // send request to backend
           await backend.delete(`/notes/${id}`)
-          navigate("/")
+          navigate("/notes")
         } catch (error) {
             setError(true)  
             setErrorMessage(error.message)
