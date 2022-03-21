@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+
+// import Material-UI components
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -31,6 +33,7 @@ const HeaderLink = props => {
     )
 }
 
+// array of pages to show in the header when on the homepage, login and logout
 const homePages = [
     <HeaderLink location="/" linkText="Home"/>,
     // <HeaderLink location="/notes" linkText="Notes"/>,
@@ -39,21 +42,30 @@ const homePages = [
     // <HeaderLink location="/log-out" linkText="Log Out"/>
 ]
 
+// array of pages to show in the header when on pages to do with notes
 const notePages = [
   <HeaderLink location="/log-out" linkText="Log Out"/>
 ]
 
+// the main header object
 export const Header = ({pageType}) => {
   const [anchorElNav, setAnchorElNav] = useState(null)
+  // state for which array of pages to render
   const [pages, setPages] = useState([])
 
+  // event handler for opening the mobile menu
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
   }
 
+  // event handler for closing the mobile menu
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
+
+  // If the header component is called with the param pageType set to "notes", display
+  // the notePages array of links in the header, otherwise show the homePages array.
+  // re-render when pageType changes
   useEffect(() => {
     if (pageType === "notes") {
       setPages(notePages)
@@ -62,13 +74,12 @@ export const Header = ({pageType}) => {
     }
 },[pageType])
   
-
-  console.log(pageType)
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Small screen Menu */}
+          {/* App Name */}
           <Typography
             variant="h6"
             noWrap
@@ -78,6 +89,7 @@ export const Header = ({pageType}) => {
             {appName}
           </Typography>
 
+          {/* Small screen menu button */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -107,6 +119,7 @@ export const Header = ({pageType}) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
+              {/* map menu items from pages array */}
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
@@ -115,6 +128,7 @@ export const Header = ({pageType}) => {
             </Menu>
           </Box>
           {/* large screen menu */}
+          {/* App Name */}
           <Typography
             variant="h6"
             noWrap
@@ -124,6 +138,7 @@ export const Header = ({pageType}) => {
             {appName}
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {/* map menu items from pages array */}
             {pages.map((page) => (
                <Button
                 key={page}
