@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { 
         Link,
         // useParams,
-        // useNavigate
+        useNavigate
     } from "react-router-dom"
 
 import { backend } from '../../data'
@@ -96,8 +96,11 @@ const SkeletonBox = ({notesToRender}) => {
     const [notes, setNotes] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState([])
+    const [status, setStatus] = useState()
 
+    // declare navigate as useNavigate cannot be defined inside a useEffect
+    const navigate = useNavigate()
     // open dialog
     // const [open, setOpen] = useState(false);
     // const handleClickOpen = () => {
@@ -123,18 +126,32 @@ const SkeletonBox = ({notesToRender}) => {
         })
         // if it fails, update the error state with the error message
       .catch((error) => {
-        setError(true)  
-        setErrorMessage(error.message)
-        })
+        // set Error state to true so the error message component renders
+        setError(true)
+        // set error message state to the data response from the backend
+        setErrorMessage(error.response.data.error)
+        // set status state to the error response status
+        // this is done separately to the step above as parsing the error data in the
+        // error component throws an error
+        setStatus(error.response.status)
+    })
         // regardless of success or error, clean up by setting loading state to false
       .finally(() => {
           setLoading(false)
         })
     }
-    // get the backend data on first render
+// if error status is 403 "unauthorised", redirect to the login page
+    useEffect(() => {
+        if(status === 403) {
+            navigate("/log-in")
+        }
+        },[status, navigate])
+
+    // get the backend data on first render - is this required???
     useEffect(() => {
       getNotes()
     }, [])
+
     return (
         <>
             {/* loading indicator */}
