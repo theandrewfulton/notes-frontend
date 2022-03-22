@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom"
 // grab backend
 import { backend } from '../../../data'
 
+// import error component
+import { Error } from '../../../components/error'
+
 // imports for Material-ui
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
@@ -17,6 +20,8 @@ export const LogIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState([])
 
     const navigate = useNavigate()
 
@@ -39,9 +44,17 @@ export const LogIn = () => {
             // redirect to home page
             navigate("/notes")
         } catch (error) {
-            // If Fail:
-            // error message yere
-            // stop loading
+             // set Error state to true so the error message component renders
+        setError(true)
+        // if axios returns a network error, manually update the error message state
+        if (error.message === "Network Error") {
+            setErrorMessage("Network error. Please try again")
+        } else if (error.response.status === 401) {
+            setErrorMessage("We were unable to log you in. Please check your email and password and try again")
+        } else {
+        // set error message state to the data response from the backend
+        setErrorMessage(error.response.data.error)
+        }
             setLoading(false)
         }
         
@@ -49,7 +62,10 @@ export const LogIn = () => {
 
     return (
         <>
+            {/* loading indicator */}
             {loading && <LinearProgress />}
+            {/* error messages */}
+            {error && <Error errorMessage={errorMessage}/>}
             <Container
                 sx={{
                     mt:3
