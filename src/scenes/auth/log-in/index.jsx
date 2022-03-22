@@ -8,8 +8,6 @@ import { backend } from '../../../data'
 // import error component
 import { Error } from '../../../components/error'
 
-// import Redirect helper
-import { Redirect } from '../../../components/redirect'
 
 // imports for Material-ui
 import Button from '@mui/material/Button'
@@ -63,9 +61,6 @@ export const LogIn = () => {
         }
         
     }
-
-        // Call the redirect helper which redirects to notes if there is a jwt in localStorage
-        Redirect()
 
     return (
         <>
