@@ -12,6 +12,9 @@ import LinearProgress from '@mui/material/LinearProgress'
 // grab backend to use based on environment and grab error helper
 import { backend } from '../../../data'
 
+// import error component
+import { Error } from '../../../components/error'
+
 // import Redirect helper
 import { Redirect } from '../../../components/redirect'
 
@@ -20,6 +23,9 @@ export const SignUp = () => {
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState([])
+    const [status, setStatus] = useState()
 
     const navigate = useNavigate()
 
@@ -44,10 +50,21 @@ export const SignUp = () => {
             // redirect to home page
             navigate("/notes")
         } catch (error) {
-            // If Fail:
-            // error messages here
-            // stop loading
-            setLoading(false)
+             // set Error state to true so the error message component renders
+            setError(true)
+            // if axios returns a network error, manually update the error message state
+            if (error.message === "Network Error") {
+                setErrorMessage("Network error. Please try again")
+            } else {
+            // set error message state to the data response from the backend
+            setErrorMessage(error.response.data.errors)
+            console.log(error.response.data.errors)
+            // set status state to the error response status
+            // this is done separately to the step above as parsing the error data in the
+            // error component throws an error
+            setStatus(error.response.status)
+                setLoading(false)
+            }
         }
         
     }
@@ -57,7 +74,10 @@ export const SignUp = () => {
 
 return (
     <>
+        {/* loading indicator */}
         {loading && <LinearProgress />}
+            {/* error messages */}
+            {error && <Error errorMessage={errorMessage}/>}
         <Container
             sx={{
                 mt:3
