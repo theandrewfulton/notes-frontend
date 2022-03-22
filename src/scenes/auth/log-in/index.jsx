@@ -1,4 +1,3 @@
-
 import { useState } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
@@ -49,6 +48,7 @@ export const LogIn = () => {
         // if axios returns a network error, manually update the error message state
         if (error.message === "Network Error") {
             setErrorMessage("Network error. Please try again")
+            // if the backend returns 401 unauthorised - display a custom error message
         } else if (error.response.status === 401) {
             setErrorMessage("We were unable to log you in. Please check your email and password and try again")
         } else {
