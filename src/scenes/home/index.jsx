@@ -1,14 +1,9 @@
-import { useEffect } from 'react'
-import { useNavigate } from "react-router-dom"
+import { Redirect } from '../../components/redirect'
 
 export const Home = () => {
-    // if there is a JWT in local storage, redirect to /notes
-    const navigate = useNavigate()
-    useEffect (() => {
-        if (localStorage.jwt) {
-            navigate("/notes")
-        }
-    })
+// Call the redirect helper which redirects to notes if there is a jwt in localStorage
+ Redirect()
+
     return (
         <p>This is the homepage</p>
     )
