@@ -12,6 +12,9 @@ import LinearProgress from '@mui/material/LinearProgress'
 // grab backend to use based on environment and grab error helper
 import { backend } from '../../../data'
 
+// import Redirect helper
+import { Redirect } from '../../../components/redirect'
+
 export const SignUp = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -48,6 +51,9 @@ export const SignUp = () => {
         }
         
     }
+
+    // Call the redirect helper which redirects to notes if there is a jwt in localStorage
+    Redirect()
 
 return (
     <>
