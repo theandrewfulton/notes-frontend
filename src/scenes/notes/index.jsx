@@ -130,10 +130,10 @@ const SkeletonBox = ({notesToRender}) => {
         setError(true)
         // if axios returns a network error, manually update the error message state
         if (error.message === "Network Error") {
-            setErrorMessage("Network error. Please try again")
+            setErrorMessage(["Network error. Please try again"])
         } else {
         // set error message state to the data response from the backend
-        setErrorMessage(error.response.data.error)
+        setErrorMessage(error.response.data.errors)
         // set status state to the error response status
         // this is done separately to the step above as parsing the error data in the
         // error component throws an error

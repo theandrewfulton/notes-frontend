@@ -49,10 +49,10 @@ export const LogIn = () => {
         setError(true)
         // if axios returns a network error, manually update the error message state
         if (error.message === "Network Error") {
-            setErrorMessage("Network error. Please try again")
+            setErrorMessage(["Network error. Please try again"])
             // if the backend returns 401 unauthorised - display a custom error message
         } else if (error.response.status === 401) {
-            setErrorMessage("We were unable to log you in. Please check your email and password and try again")
+            setErrorMessage(["We were unable to log you in. Please check your email and password and try again"])
         } else {
         // set error message state to the data response from the backend
         setErrorMessage(error.response.data.error)
