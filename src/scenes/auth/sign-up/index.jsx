@@ -25,7 +25,6 @@ export const SignUp = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [errorMessage, setErrorMessage] = useState([])
-    const [status, setStatus] = useState()
 
     const navigate = useNavigate()
 
@@ -58,12 +57,6 @@ export const SignUp = () => {
             } else {
             // set error message state to the data response from the backend
             setErrorMessage(error.response.data.errors)
-            console.log(error.response.data.errors)
-            // set status state to the error response status
-            // this is done separately to the step above as parsing the error data in the
-            // error component throws an error
-            setStatus(error.response.status)
-                setLoading(false)
             }
         }
         
